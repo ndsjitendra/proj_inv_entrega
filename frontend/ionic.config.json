@@ -1,0 +1,8 @@
+{
+  "name": "protQR",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

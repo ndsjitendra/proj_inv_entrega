@@ -1,0 +1,19 @@
+vars:
+  BUNDLE_ID:
+    default: io.ionic.projinv
+  PACKAGE_NAME:
+    default: io.ionic.projinv
+
+platforms:
+  android:
+    packageName: $PACKAGE_NAME
+    versionName: 0.0.1
+    versionCode: 1
+
+    manifest:
+      - file: AndroidManifest.xml
+        target: manifest/application/activity
+        attrs: 
+          android:windowSoftInputMode: "stateVisible"
+          android:screenOrientation: "portrait"
+              

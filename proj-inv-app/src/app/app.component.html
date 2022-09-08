@@ -1,0 +1,9 @@
+<app-nav-bar class="nav-bar-position" [tab]="tab" *ngIf="loggedIn" (logoutEvent)="logout()"
+  (redirectEvent)="redirect($event)">
+</app-nav-bar>
+<router-outlet></router-outlet>
+
+<ngx-spinner bdColor="rgba(255,255,255,0.8)" size="medium" color="#4299A2" type="ball-clip-rotate-multiple">
+  <p *ngIf="isOnline" style="font-size: 20px; color: #283B3F">Cargando...</p>
+  <p style="font-size: 20px; color: #283B3F" *ngIf="!isOnline"> Ha perdido conexión ... Restableciendo</p>
+</ngx-spinner>
