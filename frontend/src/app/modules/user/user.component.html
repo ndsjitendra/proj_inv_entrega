@@ -1,0 +1,23 @@
+<app-header [title]="title" [userPage]="true" [inModule]="true" (exitEvent)="exit()"></app-header>
+<ion-content>
+  <div class="">
+    <ion-list>
+      <ion-item (click)="changePersonalInfo()">
+        <ion-label>
+          Cambiar información personal
+        </ion-label>
+        <div class="text-right">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </div>
+      </ion-item>
+      <ion-item (click)="doLogout()">
+        <ion-label>
+          Salir de cuenta
+        </ion-label>
+        <div class="text-right">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

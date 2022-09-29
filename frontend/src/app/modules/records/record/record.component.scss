@@ -1,0 +1,21 @@
+.list-container {
+  height: 60%;
+  overflow-y: scroll;
+
+  :first-child {
+    --border-radius:0;
+    --border-width:0;
+  }
+
+  ion-button{
+    --width:10rem;
+    width:10rem;
+  }
+
+  ion-text {
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

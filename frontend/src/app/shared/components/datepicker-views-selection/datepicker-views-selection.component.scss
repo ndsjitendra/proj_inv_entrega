@@ -1,0 +1,41 @@
+:host {
+  width: 100%;
+  .invalid {
+    background: #fce8e6;
+  }
+  .datepicker {
+    background: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    input {
+      pointer-events: none;
+      padding-left: 5px;
+      border: none;
+      font-size: larger;
+      font-weight: 400;
+      // padding: .375rem .75rem;
+      color: #34464a;
+      &::-ms-input-placeholder {color: #34464a;}
+    }
+
+    .example-month-picker .mat-calendar-period-button {
+      pointer-events: none;
+    }
+    
+    .example-month-picker .mat-calendar-arrow {
+      display: none;
+    }
+
+    mat-datepicker-toggle.mat-datepicker-toggle {
+      &.disabled {
+        background: #e9ecef;
+      }
+
+      &.mat-datepicker-toggle-active {
+        color: rgba(255,255,255, var(--tw-text-opacity));
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+@media only screen and (max-width:375px) and (max-height:667px) {
+  .button-array {
+    max-height: 405px !important;
+    max-width: 366px !important;
+    min-height: 405px !important;
+    min-width: 366px !important;
+
+    .block-option {
+      min-height: 202.5px !important;
+      min-width: 183px !important;
+      max-height: 202.5px !important;
+      max-width: 183px !important;
+
+      span {
+        font-size: medium;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:361px) {
+  .button-array {
+    max-height: 370px !important;
+    max-width: 355px !important;
+    min-height: 370px !important;
+    min-width: 355px !important;
+
+    .block-option {
+      min-height: 185px !important;
+      min-width: 177.5px !important;
+      max-height: 185px !important;
+      max-width: 177.5px !important;
+
+      span {
+        font-size: medium;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width:320px) {
+  .button-array {
+    min-height: 300px !important;
+    min-width: 310px !important;
+    max-height: 300px !important;
+    max-width: 310px !important;
+
+    .block-option {
+      min-height: 150px !important;
+      min-width: 155px !important;
+      max-height: 150px !important;
+      max-width: 155px !important;
+
+      span {
+        font-size: small;
+      }
+    }
+
+  }
+}
+
+.swiper-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 18.5%;
+  width: 100%;
+}
+
+.option-container {
+  height: 100%;
+  width: 100%;
+}
+
+/* TILE SIZE FOR MENU :
+
+
+LARGE : height: 536 width 375
+MEDIUM : height 350 width 320
+SMALL : height 280 width 300
+
+BUTTON: height: 237 width: 197
+MEDIUM
+BUTTON: height: 185 width: 172
+SMALL
+BUTTON: height: 155 widht:152
+*/

@@ -1,0 +1,7 @@
+<label *ngIf="showLabel" class="block text-gray-700 text-sm font-bold mb-2" [ngClass]="{'required-missing-color': isValidated}">
+  {{ label }}<span *ngIf="isRequired"> *</span>
+</label>
+<ion-input *ngIf="!disableCheck" pattern="email" type="email" [maxlength]="maxlength" (ionFocus)="focus($event)"
+  [placeholder]="placeholder" (ionChange)="valueChange($event)" [(ngModel)]="value" >
+</ion-input>
+<ion-input *ngIf="disableCheck" type="email" disabled class="disabled-input" [placeholder]="placeholder"></ion-input>

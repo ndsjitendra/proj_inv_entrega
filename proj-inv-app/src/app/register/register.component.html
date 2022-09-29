@@ -1,0 +1,202 @@
+<div class="h-screen w-full bg-gray-600">
+  <div class="h-full d-flex justify-center align-items-center ">
+    <div class="bg-white rounded-md  w-10/12">
+      <div class=" w-full text-center">
+        <h1 class="m-2">Registro</h1>
+        <form [formGroup]="registerForm">
+          <div class="px-4 pt-2 pb-4 mb-2 mt-2">
+            <!--SECCION 1-->
+            <div *ngIf="step === 1">
+              <div class="container">
+                <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.nombre || registerForm.value.nombre === '') && validationIssues}">Nombre</label>
+                <input id="nombre" formControlName="nombre" maxlength="50"
+                  class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                  [value]="registerForm.value.nombre" placeholder="Ingresar nombre/s" required autofocus>
+              </div>
+              <div class="container">
+                <label for="apellido" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.apellido || registerForm.value.apellido === '') && validationIssues}">Apellido</label>
+                <input id="apellido" formControlName="apellido"
+                  class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                  [value]="registerForm.value.apellido" placeholder="Ingresar apellido/s" required autofocus>
+              </div>
+              <div class="container">
+                <label for="telefono" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.telefono || registerForm.value.telefono === '') && validationIssues}">Teléfono</label>
+                <input type="tel" id="telefono" mask='(000) 000-0000' formControlName="telefono"
+                  class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                  [value]="registerForm.value.telefono" placeholder="Ingresar teléfono" required autofocus>
+              </div>
+              <div class="container">
+                <label for="estado" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.estado || registerForm.value.estado === '') && validationIssues}">Seleccionar
+                  Estado</label>
+                <mat-select
+                  class="bg-gray-600 shadow  w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white"
+                  formControlName="estado" placeholder="Seleccionar Estado" [value]="registerForm.value.estado"
+                  (selectionChange)="changeSelect($event, 'estado')">
+                  <mat-option class="py-1" *ngFor="let estado of estados" [value]="estado">{{estado}}</mat-option>
+                </mat-select>
+              </div>
+              <div class="container">
+                <label for="ciudad" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.ciudad || registerForm.value.ciudad === '') && validationIssues}">Ciudad</label>
+                <input id="ciudad" formControlName="ciudad" [value]="registerForm.value.ciudad" spellcheck="false"
+                  class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                  placeholder="Ingresar ciudad" required autofocus>
+              </div>
+              <div class="container">
+                <label for="cp" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.cp || registerForm.value.cp === '') && validationIssues}">Código
+                  postal</label>
+                <input type="text" id="cp" formControlName="cp" [value]="registerForm.value.cp" spellcheck="false"
+                  class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                  mask='00000' placeholder="Ingresar Código Postal" required autofocus>
+              </div>
+              <div class="container">
+                <label for="callenum" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.calleYNum || registerForm.value.calleYNum === '') && validationIssues}">Calle
+                  y Número</label>
+                <input id="callenum" formControlName="calleYNum" spellcheck="false"
+                  [value]="registerForm.value.calleYNum"
+                  class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                  placeholder="Ingresar calle y número" required autofocus>
+              </div>
+            </div>
+            <!--FIN DE SECCION 1-->
+            <!--SECCION 2-->
+            <div *ngIf="step === 2">
+              <div class="container">
+                <label for="estado" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.actividad || registerForm.value.actividad === '') && validationIssues}">Seleccionar
+                  Actividad</label>
+                <mat-select
+                  class="bg-gray-600 shadow  w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white"
+                  formControlName="actividad" placeholder="Seleccionar Actividad" [value]="registerForm.value.actividad"
+                  (selectionChange)="changeSelect($event, 'actividad')">
+                  <mat-option class="py-1" value="Técnico Independiente">Técnico Independiente</mat-option>
+                  <mat-option class="py-1" value="Empresa de Mtto. y Servicio">Empresa de Mtto. y Servicio</mat-option>
+                </mat-select>
+              </div>
+              <div class="container">
+                <label for="experiencia" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.experiencia || registerForm.value.experiencia === '') && validationIssues}">Experiencia</label>
+                <input type="text" id="experiencia" formControlName="experiencia" autocomplete="disabled"
+                  [value]="registerForm.value.experiencia"
+                  class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                  mask='0?0' placeholder="Ingresar experiencia (años)" required autofocus>
+              </div>
+              <div class="container">
+                <label for="compresorInvotech" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.utilizadoCompresor || registerForm.value.utilizadoCompresor === '') && validationIssues}">¿Has
+                  utilizado el compresor Invotech anteriormente?</label>
+                <mat-select
+                  class="bg-gray-600 shadow  w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white"
+                  formControlName="utilizadoCompresor" placeholder="¿Haz utilizado Invotech?"
+                  [value]="registerForm.value.utilizadoCompresor"
+                  (selectionChange)="changeSelect($event,'utilizadoCompresor')">
+                  <mat-option class="py-1" value="si">Si</mat-option>
+                  <mat-option class="py-1" value="no">No</mat-option>
+                </mat-select>
+              </div>
+              <div class="container">
+                <label for="recibirInformacion" class="block text-gray-700 text-sm font-bold mb-2 mt-2"
+                  [ngClass]="{'required-missing-color': (!registerForm.value.recibirInformacion || registerForm.value.recibirInformacion === '') && validationIssues}">¿Quieres
+                  recibir información de parte de Invotech?</label>
+                <mat-select
+                  class="bg-gray-600 shadow  w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white"
+                  formControlName="recibirInformacion" placeholder="Seleccionar Actividad"
+                  [value]="registerForm.value.recibirInformacion"
+                  (selectionChange)="changeSelect($event,'recibirInformacion')">
+                  <mat-option class="py-1" value="si">Si</mat-option>
+                  <mat-option class="py-1" value="no">No</mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <!--FIN DE SECCION 2-->
+            <!--SECCION 3-->
+            <div *ngIf="step===3">
+              <div class="container mt-6">
+                <h2
+                  [ngClass]="{'required-missing-color': (!registerForm.value.foto || registerForm.value.foto === '') && validationIssues}">
+                  Añada su foto de perfil</h2>
+                <div class="row" *ngIf="!registerForm.value.foto">
+                  <div class="col-12" (click)="selectFile()">
+                    <div class="m-2">
+                      <div *ngIf="!registerForm.value.foto " class="dropzone p-4">
+                        <div class="mb-6">
+                          <i class="fas fa-4x fa-upload"></i>
+                        </div>
+                        <input style="display:none;" type="file" id="select-input" (change)="fileBrowseHandler($event)"
+                          accept="image/png, image/jpeg" />
+                        <h3>Haz click para elegir una imagen</h3>
+                        <p>Archivo debe ser formato png/jpeg</p>
+                        <!-- <label>Haz click para elegir una imagen</label> -->
+                      </div>
+                      <div *ngIf="registerForm.value.foto" class="dropzone p-4">
+                        <i class="fa fa-check-circle fa-4x" style="color:green" aria-hidden="true"></i>
+                        <h3>Se subio la imagen</h3>
+                        <p>Imagen: {{registerForm.value.foto.name}}</p>
+                        <button class="p-2 text-center rounded-md bg-red-500" (click)="deletePhoto()">Borrar
+                          Imagen</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="registerForm.value.foto && registerForm.value.foto !==''" class="row text-center">
+                <div class="col-12"> Imagen de Perfil </div>
+                <div class="col-12 h-2/5 w-2/5 flex justify-center">
+                  <img class="object-scale-down" [src]="registerForm.value.foto">
+                </div>
+                <div class="col-12 text-center">
+                  <button class="shadow appearance-none w-2/4  rounded p-2 m-2 leading-tight bg-gray-500 mb-3"
+                    (click)="deletePhoto()">Borrar Imagen</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--FIN DE SECCION 3-->
+          <!--SECCION 4-->
+          <div *ngIf="step===4">
+            <div class="container">
+              <label [ngClass]="{'required-missing-color': ((!registerForm.value.username || registerForm.value.username === '') || !registerForm.controls.username.valid) && validationIssues}" for="username" class="block text-gray-700 text-sm font-bold mb-2 mt-2">Usuario (correo)</label>
+              <input type="email" id="username" formControlName="username" autocomplete=false
+                class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                placeholder="Ingresar usuario (correo)" required autofocus autocomplete="off">
+            </div>
+            <div class="container">
+              <label [ngClass]="{'required-missing-color': (!registerForm.value.password || registerForm.value.password === '') && validationIssues}" for="password" class="block text-gray-700 text-sm font-bold mb-2 mt-2">Contraseña</label>
+              <input type="password" id="password" formControlName="password" minlength="7"
+                class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none"
+                placeholder="Contraseña" required autocomplete="off">
+            </div>
+            <div class="container">
+              <label [ngClass]="{'required-missing-color': (!registerForm.value.confirmarPassword || registerForm.value.confirmarPassword === '') && validationIssues}" for="confirmarPassword" class="block text-gray-700 text-sm font-bold mb-2 mt-2">Confirmar
+                Contraseña</label>
+              <input type="password" id="confirmarPassword" formControlName="confirmarPassword"
+                class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none"
+                placeholder="Volver a ingresar Contraseña" required autocomplete="off">
+            </div>
+            <p *ngIf="mismatchPassword" class="text-red-700 text-center mt-2 mb-2">Las contraseñas no son iguales!</p>
+            <p *ngIf="mismatchPassword" class="text-red-700 text-center mt-2 mb-2">La contraseña debe tener al menos un
+              número y una letra mayúscula!</p>
+            <p *ngIf="userAlreadyExists" class="text-red-700 text-center mt-2 mb-2">Usuario ya existe!</p>
+          </div>
+          <!--FIN DE SECCION 4-->
+        </form>
+      </div>
+      <div class="w-full" style="display: flex; justify-content:center">
+        <button type="button" *ngIf="step !== 1"
+          class="shadow appearance-none w-1/4  rounded p-2 m-2  leading-tight bg-red-500 mb-3"
+          (click)="returnStep()">Atras</button>
+        <button type="button" *ngIf="step !==4"
+          class="shadow appearance-none w-3/4  rounded p-2 m-2 leading-tight bg-green-500 mb-3"
+          (click)="validateNext()">Siguiente</button>
+        <button *ngIf="step === 4" type="button"
+          class="shadow appearance-none w-3/4  rounded p-2 m-2 leading-tight bg-green-500 mb-3" type="submit"
+          (click)="register()"> Enviar </button>
+      </div>
+    </div>
+  </div>

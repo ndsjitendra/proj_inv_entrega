@@ -1,0 +1,34 @@
+<!--SECCION 4-->
+<form *ngIf="dataInitialized" [formGroup]="addNewForm" class="flex justify-center flex-column p-3">
+  <div class="container text-center">
+    <p class="text-base text-black font-bold">* Llenar de la mejor manera la información que se solicita a continuación, ya que su garantía se
+      procesará con esta misma.*</p>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="presionEvaporacion" label="PRESIÓN EVAPORACIÓN"  [isValidated]="validationIssues && !addNewForm.controls.presionEvaporacion.valid" placeholder="Ingresar presión" [isRequired]="true" [maxlength]="10" type="number" ></app-input-field>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="temperaturaEvaporacion" [isValidated]="validationIssues && !addNewForm.controls.temperaturaEvaporacion.valid" label="TEMPERATURA DE EVAPORACIÓN" placeholder="Ingresar temperatura" [isRequired]="true" [maxlength]="10" type="number" ></app-input-field>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="presionCondensacion"  [isValidated] ="validationIssues && !addNewForm.controls.presionCondensacion.valid"  label="PRESIÓN DE CONDENSACIÓN" placeholder="Ingresar presión" [isRequired]="true" [maxlength]="10" type="number" ></app-input-field>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="temperaturaCondensacion"  [isValidated]="validationIssues && !addNewForm.controls.temperaturaCondensacion.valid"  label="TEMPERATURA CONDENSACIÓN" placeholder="Ingresar temperatura" [isRequired]="true" [maxlength]="10" type="number" ></app-input-field>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="temperaturaFinal"  [isValidated]="validationIssues && !addNewForm.controls.temperaturaFinal.valid"  label="TEMPERATURA FINAL DE SISTEMA" placeholder="Ingresar presión" [isRequired]="true" [maxlength]="10" type="number" ></app-input-field>
+  </div>
+  <div class="container">
+    <app-camera-field formControlName="contactorCapacitor" [smallPhoto]="true" (deletePhotoEvent)="deletePhoto('contactorCapacitor')" [isRequired]="true" label="Subir imagen del contactor y capacitor" [isValidated]="validationIssues && !addNewForm.controls.contactorCapacitor.valid" setValueLabel="Imagen del contactor y capacitor"></app-camera-field>
+  </div>
+  <div class="container">
+    <app-camera-field formControlName="superiorCapacitor" [smallPhoto]="true" (deletePhotoEvent)="deletePhoto('superiorCapacitor')" [isRequired]="true" label="Subir imagen de parte superior del capacitor" [isValidated]="validationIssues && !addNewForm.controls.superiorCapacitor.valid" setValueLabel="Imagen de la parte superior del capacitor"></app-camera-field>
+  </div>
+  <div class="container">
+    <app-camera-field formControlName="compresorSoldado" [smallPhoto]="true" (deletePhotoEvent)="deletePhoto('compresorSoldado')" [isRequired]="true" label="Subir imagen del compresor soldado al sistema" [isValidated]="validationIssues && !addNewForm.controls.compresorSoldado.valid" setValueLabel="Imagen del compresor soldado"></app-camera-field>
+  </div>
+  <div class="container">
+    <app-camera-field formControlName="instalacion" [smallPhoto]="true" (deletePhotoEvent)="deletePhoto('instalacion')" [isRequired]="true" label="Subir imagen de la instalación" [isValidated]="validationIssues && !addNewForm.controls.instalacion.valid" setValueLabel="Imagen de la Instalación"></app-camera-field>
+  </div>
+</form>

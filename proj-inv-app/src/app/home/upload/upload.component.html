@@ -1,0 +1,45 @@
+<div class="bg-gray-600 h-full" [ngClass]="{'during-upload':uploading}">
+  <div class="p-4">
+    <div class="p-2 m-2 bg-gray-200 rounded-md text-center">
+      <label>
+        <h2>Seleccionar Tipo de Archivo</h2>
+      </label>
+      <div class="row">
+        <div class="col-12">
+          <div class="p-2rounded-md">
+            <button class="h-10 mx-2 px-8 bg-green-600 rounded text-white"
+              [ngClass]="{'filtro-seleccionado': dataType==='usuarios'}" (click)="filter('usuarios')">Usuarios</button>
+            <button class="h-10 mx-2 px-8 bg-green-600 rounded text-white"
+              [ngClass]="{'filtro-seleccionado': dataType==='compresores'}"
+              (click)="filter('compresores')">Compresores</button>
+          </div>
+        </div>
+        <div class="col-12">
+          <div *ngIf="dataType" class="m-4">
+            <div *ngIf="!file && dataType==='compresores'" class="dropzone p-4">
+              <input type="file" #fileDropRef id="fileDropRef" (change)="fileBrowseHandler($event)" accept=".csv" />
+              <i class="fas fa-4x fa-upload"></i>
+              <h3>Subir archivo</h3>
+              <p>Archivo debe ser formato .csv</p>
+              <label>Buscar archivo</label>
+            </div>
+            <div *ngIf="file" class="dropzone p-4">
+              <i class="fa fa-check-circle fa-4x" style="color:green" aria-hidden="true"></i>
+              <h3>Se subio el archivo</h3>
+              <p>Archivo: {{file.name}}</p>
+              <button class="p-2 text-center rounded-md bg-red-500" (click)="deleteFile()">Borrar Archivo</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-center">
+          <div *ngIf="file">
+            <button class="h-10 mx-2 px-8 bg-blue-600 rounded text-white" (click)="uploadFile()">Subir
+              Archivo a Base de Datos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-alert class="alert-position" *ngIf="showAlert" [type]="alertType" [message]="alertMessage">
+    </app-alert>
+  </div>
+</div>

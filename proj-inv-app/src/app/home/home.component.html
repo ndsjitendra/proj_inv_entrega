@@ -1,0 +1,151 @@
+<div class="bg-gray-600 h-full">
+  <div class="p-4">
+    <div class="p-2 m-2 bg-gray-200 rounded-md ">
+      <label>Filtrar Por: </label>
+      <div class="row">
+        <div class="col-8">
+          <div class="p-2 bg-gray-200 rounded-md">
+            <button class="h-10 mx-2 px-8 bg-green-600 rounded text-white"
+              [ngClass]="{'filtro-seleccionado': dataType==='registros'}" (click)="filter('registros')">Registros</button>
+            <button class="h-10 mx-2 px-8 bg-green-600 rounded text-white"
+              [ngClass]="{'filtro-seleccionado': dataType==='usuarios'}" (click)="filter('usuarios')">Usuarios</button>
+            <button class="h-10 mx-2 px-8 bg-green-600 rounded text-white"
+              [ngClass]="{'filtro-seleccionado': dataType==='compresores'}" (click)="filter('compresores')">Compresores</button>
+            </div>
+        </div>
+
+        <div class=" flex justify-end items-center col-4">
+          <button *ngIf="dataType !=='registros'" class="h-10 mx-2 px-8 bg-green-600 rounded text-white"
+            [disabled]="dataType===''" (click)="newData()">
+            <span *ngIf="dataType ==='compresores'">Nuevo Compresor</span>
+            <span *ngIf="dataType ==='usuarios'">Nuevo Usuario</span>
+          </button>
+          </div>
+      </div>
+      <mat-form-field class="ml-4 w-1/3">
+        <input matInput (keyup)="applyFilter($event.target['value'])" placeholder="Buscar">
+      </mat-form-field>
+    </div>
+    <div class="rounded-md p-2">
+      <mat-table class="draft-table" [dataSource]="dataSource" matSort>
+
+    <!--Record Columns-->
+    <ng-container matColumnDef="compresorModel">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Modelo
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.modelo ? row.modelo : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="compresorSerial">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Serial
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.serie ? row.serie : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="matricula">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Matrícula
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.matricula ? row.matricula : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="nombreTecnico">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Nombre del Técnico
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.nombreTecnico ? row.nombreTecnico : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="username">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Usuario
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.username ? row.username : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Status
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.status ? row.status : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="createdAt">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Fecha de Creación
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.createdAt ? (row.createdAt | date): 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+
+    <!--Compresor Columns-->
+    <ng-container matColumnDef="modelo">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Modelo
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.modelo ? row.modelo : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Tipo
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.tipo ? row.tipo : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="desc_prod">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Descripción
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.desc_prod ? row.desc_prod : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+
+    <!--User Columns-->
+    <ng-container matColumnDef="foto">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text"><img *ngIf="row?.foto" [src]="row?.foto" width="30" height="30">
+        <span *ngIf="!row.foto">N.D.</span>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Nombre
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.nombre && row.apellido ? row.nombre + " "+ row.apellido
+        :
+        'N.D.'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="experiencia">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Experiencia
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">{{row.experiencia ? row.experiencia : 'N.D.'}}
+      </mat-cell>
+    </ng-container>
+
+
+    <!--Actions-->
+    <ng-container matColumnDef="action">
+      <mat-header-cell class="mat-header-row" *matHeaderCellDef mat-sort-header> Acción
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="small-text">
+        <div (click)="getRow(row)">
+          <i class="fas fa-eye fa-2x mx-2"></i>
+        </div>
+        <div class="ml-10" *ngIf="dataType!=='registros'" (click)="deleteRow(row)">
+          <i class="fas fa-trash-alt fa-2x mx-2"></i>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row class="mat-header-row" *matHeaderRowDef="displayedColumns">
+    </mat-header-row>
+    <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+    </mat-table>
+    <mat-paginator class="mat-row" [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+</div>
+<app-alert class="alert-position" *ngIf="showAlert" [type]="alertType" [message]="alertMessage">
+</app-alert>
+<div *ngIf="dataType==='compresores'">
+  <button class="h-10 mx-2 px-8 bg-blue-500 rounded text-white" (click)="enableUserSync()">Habilitar Sincronizado para
+    Usuarios</button>
+  <button class="h-10 mx-2 px-8 bg-red-500 rounded text-white" (click)="disableUserSync()">Deshabilitar Sincronizado
+    para Usuarios</button>
+</div>
+
+  </div>
+
+</div>

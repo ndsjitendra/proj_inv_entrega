@@ -1,0 +1,43 @@
+.sub-header {
+  --border-radius:0;
+  --border-width:0;
+}
+
+.container {
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.information-button-container {
+  bottom:0;
+  left:0;
+  position:absolute;
+  height:10%;
+}
+
+.list-container {
+  height: 80%;
+  overflow-y: scroll;
+
+  :first-child {
+    --border-radius:0;
+    --border-width:0;
+  }
+
+  ion-button{
+    --width:10rem;
+    width:10rem;
+  }
+
+  ion-text {
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.modal-compressor {
+  height:100%;
+  width: 100%;
+}

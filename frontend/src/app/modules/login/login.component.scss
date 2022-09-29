@@ -1,0 +1,36 @@
+.login-form{
+  display:flex;
+}
+
+input:-webkit-autofill
+{
+ -webkit-text-fill-color: white !important;
+}
+
+:host::ng-deep .mat-select-placeholder {
+  --tw-text-opacity: 1;
+  color: rgba(255,255,255, var(--tw-text-opacity));
+}
+
+:host::ng-deep .mat-select-panel {
+  max-height: 30vh !important;
+}
+
+:host::ng-deep .mat-select-value{
+  color:white;
+}
+
+input:-webkit-autofill {
+  --tw-text-opacity:1;
+  -webkit-box-shadow: 0 0 0 1000px rgba(55, 65, 81, var(--tw-text-opacity)) inset !important;
+  -webkit-text-fill-color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+input:-webkit-autofill:focus {
+  --tw-text-opacity:1;
+  -webkit-box-shadow: 0 0 0 1000px rgba(55, 65, 81, var(--tw-text-opacity)) inset !important;
+  -webkit-text-fill-color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.required-missing-color {
+  color: #dc3545 !important;
+}

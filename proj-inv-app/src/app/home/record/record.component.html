@@ -1,0 +1,177 @@
+<div class="min-h-full w-full bg-gray-600 p-5">
+  <div *ngIf="record" class="p-5 bg-gray-200 shadow rounded-md ">
+    <div class="row">
+      <div class="2">
+        <h1 class="text-2xl ">
+          Registro
+          </h1>
+      </div>
+      </div>
+    <div class="row" *ngIf="dataInitialized && !editCheck">
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Usuario</label>
+        </div>
+        {{record.username}}
+      </div>
+      <!-- <div class=""></div> -->
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Modelo del Compresor</label>
+        </div>
+        {{record.compresorModel}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold"># de Serie del Compresor</label>
+        </div>
+        {{record.compresorSerial}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Fecha de Compra</label>
+        </div>
+        {{record.fechaCompra | date:dateFormat}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Distribuidor</label>
+        </div>
+        {{record.distribuidor}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Nombre del Cliente</label>
+        </div>
+        {{record.nombreCliente}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Correo del Cliente</label>
+        </div>
+        {{record.correoCliente}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Teléfono del Cliente</label>
+        </div>
+        {{record.telefonoCliente}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Marca</label>
+        </div>
+        {{record.marca}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Modelo en el que fue Instalado</label>
+        </div>
+        {{record.modeloInstalado}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Creado el:</label>
+        </div>
+        {{record.createdAt | date:dateFormat}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Garantía</label>
+        </div>
+        {{record.garantia}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Estatus</label>
+        </div>
+        <span
+          [ngClass]="{'status-pending' : record.status ==='PENDING' , 'status-approved': record.status ==='APPROVED' , 'status-denied': record.status ==='DENIED'}">
+          {{record.status}}
+        </span>
+      </div>
+<div class="col-6">
+        <div *ngIf="record.status !=='APPROVED' && record.status !=='DENIED'">
+          <div>
+            <label class="text-xl font-bold">Cambio de Estatus</label>
+          </div>
+        <div class="row">
+          <div class="col-8">
+            <mat-select [(ngModel)]="recordStatus"
+              class="bg-white shadow w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white">
+              <mat-option value="APPROVED">Aprobado</mat-option>
+              <mat-option value="DENIED">Cancelado</mat-option>
+              <mat-option value="PENDING">En espera</mat-option>
+            </mat-select>
+          </div>
+          <div class="col flex">
+            <button [disabled]="originalStatus === recordStatus" [ngClass]="{'disabled':originalStatus === recordStatus}"
+              class="rounded-md text-xl h-8 bg-green-500  w-64" (click)="changeStatus()">Confirmar</button>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Presión Evaporación</label>
+        </div>
+        <span>
+          {{record.presionEvaporacion}}
+        </span>
+        </div>
+        <div class="col-6 mb-2">
+          <div>
+            <label class="text-xl font-bold">Temperatura Evaporación</label>
+          </div>
+          <span>
+            {{record.temperaturaEvaporacion}}
+          </span>
+        </div>
+        <div class="col-6 mb-2">
+          <div>
+            <label class="text-xl font-bold">Presión Condensación</label>
+          </div>
+          <span>
+            {{record.presionCondensacion}}
+          </span>
+        </div>
+        <div class="col-6 mb-2">
+          <div>
+            <label class="text-xl font-bold">Temperatura Condensación</label>
+          </div>
+          <span>
+            {{record.temperaturaCondensacion}}
+          </span>
+        </div>
+        <div class="col-12 mb-2">
+          <div>
+            <label class="text-xl font-bold">Temperatura Final</label>
+          </div>
+          <span>
+            {{record.temperaturaFinal}}
+          </span>
+        </div>
+
+        <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Factura</label>
+        </div>
+        <img [src]="record.factura" width="250" height="250">
+      </div>
+
+    </div>
+    <app-alert class="alert-position" *ngIf="showAlert" [type]="alertType" [message]="alertMessage">
+    </app-alert>
+  </div>
+  <div class="p-2" *ngIf="!dataInitialized && !editCheck &&  !newRecordCheck">
+    <div class="p-5 shadow rounded-md bg-gray-200 text-center">
+      <p class="text-2xl">No se selecciono record!</p>
+    </div>
+  </div>
+  <div class="m-2 h-32 d-flex justify-center align-items-center">
+    <button class="rounded-md text-xl w-32 bg-gray-500 p-3 m-3"
+      (click)="regresar()">Regresar</button>
+  </div>
+
+</div>

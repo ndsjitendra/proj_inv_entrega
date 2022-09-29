@@ -1,0 +1,11 @@
+<div class="w-1/5">
+  <ion-checkbox (ionChange)="valueChange($event)" [checked]="value" [ngClass]="{'big-checkbox': checkboxSizeLarge}">
+  </ion-checkbox>
+</div>
+<div class="w-4/5">
+  <ion-label class="block text-gray-700 text-l font-bold mb-2" (click)="valueChange(null, $event)"
+    [ngClass]="{'required-missing-color': isValidated}">
+    <span [ngClass]="{'big-label': checkboxSizeLarge}">{{ label }}</span>
+    <span *ngIf="isRequired">*</span>
+  </ion-label>
+</div>

@@ -1,0 +1,26 @@
+<!--SECCION 4-->
+<form *ngIf="dataInitialized" [formGroup]="addNewForm" class="flex justify-center flex-column p-3">
+  <div class="container">
+    <app-input-field formControlName="nombreCliente" label="Nombre del Cliente"  [isValidated]="validationIssues && !addNewForm.controls.nombreCliente.valid" placeholder="Ingresar nombre del cliente" [isRequired]="true" [maxlength]="50" ></app-input-field>
+  </div>
+  <div class="container">
+    <app-select-field formControlName="estadoCliente" [dropdownPosition]="'bottom'" label="Estado del Cliente" [isValidated]="validationIssues && !addNewForm.controls.estadoCliente.valid" [isRequired]="true" [autoScroll]="true" placeholder="Seleccionar Estado del Cliente" [optionList]="estados"></app-select-field>
+  </div>
+  <div class="container">
+    <app-phone-field formControlName="telefonoCliente" label="Teléfono del Cliente" [isValidated]="validationIssues && !addNewForm.controls.telefonoCliente.valid"  placeholder="Ingresar teléfono del cliente" [autoScroll]="true" [isRequired]="true" [maxlength]="10" [minlength]="10" ></app-phone-field>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="correoCliente" label="Correo del Cliente" [isValidated]="validationIssues && !addNewForm.controls.correoCliente.valid"  placeholder="Ingresar correo del cliente" [autoScroll]="true" [isRequired]="true" [maxlength]="100" ></app-input-field>
+  </div>
+  <!-- TODO: CAMBIAR OPTION LIST POR VALORES DE COMPRESORES -->
+  <div class="container">
+    <app-select-field formControlName="modeloCompresorReemplazarCliente" [isValidated]="validationIssues && !addNewForm.controls.modeloCompresorReemplazarCliente.valid" label="Compresor a Reemplazar (Marca)" [autoScroll]="true" [isRequired]="true" placeholder="Seleccionar marca del nuevo compresor" [optionList] ="marcas"></app-select-field>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="modeloCompresorCliente" [isValidated]="validationIssues && !addNewForm.controls.modeloCompresorCliente.valid"   label="Modelo del nuevo compresor" placeholder="Modelo del nuevo compresor" [autoScroll]="true" [isRequired]="true" [maxlength]="100" ></app-input-field>
+  </div>
+  <div class="container">
+    <app-input-field formControlName="maquinaCliente" [isValidated]="validationIssues && !addNewForm.controls.maquinaCliente.valid"  label="Maquina del cliente" placeholder="Ingresar modelo de maquina" [autoScroll]="true" [isRequired]="true" [maxlength]="100" ></app-input-field>
+  </div>
+
+</form>

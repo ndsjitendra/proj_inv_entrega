@@ -1,0 +1,15 @@
+<div *ngIf="showButtons" class="bg-white ">
+    <div class="row">
+        <button *ngIf="! disableBackButton" class="col text-center background-light cursor-pointer" (click)="previousStep()">
+          <span class="text-gray-700 text-sm">{{ backbuttonName }}</span>
+        </button>
+        <button *ngIf="!nextButtonHidden" class="col bg-cyan-500 text-center  cursor-pointer"
+            [disabled]="disableSubmit" (click)="nextStep()">
+            <div class="d-flex w-full h-full justify-evenly align-items-center">
+              <span class="text-gray-700 text-sm" [ngClass]="{'bigger-font':  disableBackButton}">{{ nextTitle ? nextTitle :
+                nextbuttonTitle }}</span>
+              <ion-spinner *ngIf="loadingCheck" name="crescent"></ion-spinner>
+            </div>
+        </button>
+    </div>
+</div>

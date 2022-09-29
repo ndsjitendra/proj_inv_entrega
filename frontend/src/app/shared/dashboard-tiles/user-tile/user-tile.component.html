@@ -1,0 +1,58 @@
+<div class="h-full w-full p-2 border-black border rounded-md">
+  <ion-item>
+    <ion-thumbnail slot="end">
+      <img class="rounded-xl  h-14 w-14 mx-auto " [src]="user.foto">
+    </ion-thumbnail>
+    <ion-label>
+      <h1>{{ user.nombre + " " + user.apellido }}</h1>
+      <p class="font-bold">{{user.actividad}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-list no-lines inset="true" class="list-container py-0">
+    <ion-item no-lines>
+      <ion-label>Matrícula</ion-label>
+      <ion-text>{{user.matricula}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Teléfono </ion-label>
+      <ion-text>{{user.telefono}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estado</ion-label>
+      <ion-text>{{user.estado}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ciudad / CP</ion-label>
+      <ion-text>{{user.ciudad}} / {{user.cp}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Calle y Número</ion-label>
+      <ion-text>{{user.calleYnum}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Persona</ion-label>
+      <ion-text>{{user.persona}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>RFC</ion-label>
+      <ion-text>{{user.rfc}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Banco</ion-label>
+      <ion-text>{{user.banco}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label># de Tarjeta</ion-label>
+      <ion-text>{{user.tarjeta}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>CLABE</ion-label>
+      <ion-text>{{user.clabe? user.clabe : 'N.A.'}}</ion-text>
+    </ion-item>
+  </ion-list>
+  <section class="w-full flex justify-center">
+    <section class="w-4/5">
+      <ion-button expand="full" (click)="goToUserPage()">Mas Información</ion-button>
+    </section>
+  </section>
+</div>

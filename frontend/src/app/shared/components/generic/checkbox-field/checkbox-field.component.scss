@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  align-self: center;
+  align-items: center;
+
+  ion-checkbox {
+    margin-right: 5px;
+  }
+
+  .big-checkbox {
+    zoom:2;
+  }
+
+  .big-label {
+    font-size: 16px;
+  }
+
+  ion-label {
+    cursor: pointer;
+    display: contents;
+  }
+
+  i {
+    color: var(--ion-color-gray);
+    margin-left: 5px;
+  }
+
+  .required-missing-color {
+    color: #dc3545;
+  }
+}

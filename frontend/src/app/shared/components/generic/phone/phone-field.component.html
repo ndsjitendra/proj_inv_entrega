@@ -1,0 +1,6 @@
+<label *ngIf="showLabel" class="block text-gray-700 text-sm font-bold mb-2" [ngClass]="{'required-missing-color': isValidated}">
+  {{ label }}<span *ngIf="isRequired"> *</span>
+</label>
+<ion-input type="tel" [(ngModel)]="value" [placeholder]="placeholder" pattern="tel" (ionChange)="valueChange($event)" (keypress)="numberOnlyValidation($event)" name="phoneNumber" [min]="min" [max]="max" [maxlength]="maxlength" [minlength]="minlength" (ionFocus)="focus($event)"
+class="form-control rounded-0"></ion-input>
+<ion-input *ngIf="disableCheck" [type]="type" disabled class="disabled-input" [placeholder]="placeholder"></ion-input>

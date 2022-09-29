@@ -1,0 +1,35 @@
+:host {
+  width: 100%;
+  height:100%;
+  .invalid {
+    background: #fce8e6;
+  }
+  .datepicker {
+    background: white;
+    width: 100%;
+    height:100%;
+    border: 1px solid #ced4da;
+    display: flex;
+    align-items: center;
+
+    input {
+      pointer-events: none;
+      padding-left: 5px;
+      border: none;
+      font-weight: 400;
+      padding: .375rem .75rem;
+      color: #34464a;
+      &::-ms-input-placeholder {color: #34464a;}
+    }
+
+    mat-datepicker-toggle.mat-datepicker-toggle {
+      &.disabled {
+        background: #e9ecef;
+      }
+
+      &.mat-datepicker-toggle-active {
+        color: rgba(255,255,255, var(--tw-text-opacity));
+      }
+    }
+  }
+}

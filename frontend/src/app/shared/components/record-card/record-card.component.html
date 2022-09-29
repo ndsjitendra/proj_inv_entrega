@@ -1,0 +1,58 @@
+<div class="p-3">
+  <div class="grid grid-cols-3 gap-2 rounded-sm">
+    <div class="col-span-3 mb-2">
+      <div class="font-medium text-xl md:text-lg text-gray-800 truncate">
+        <div class="row">
+          <div class="col-11">
+            Certificación: {{record.garantia}}
+          </div>
+          <div class="col-1 top-2">
+            <i class="fa fa-angle-right fa-xl text-gray-300"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-span-1 border-r-2 border-gray-200">
+      <div class="row">
+        <div class="col-12 ">
+          <div class="text-gray-500 text-sm md:text-xs whitespace-nowrap">Cliente</div>
+        </div>
+        <div class="col-12">
+          <p class="font-medium text-md md:text-sm text-gray-800 truncate">{{record.nombreCliente}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1 border-r-2 border-gray-200">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-gray-500 text-sm md:text-xs whitespace-nowrap">Modelo</div>
+        </div>
+        <div class="col-12">
+          <div class="font-medium text-md md:text-sm text-gray-800">{{record.modelo }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1 ml-1">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-gray-500 text-sm md:text-xs whitespace-nowrap"># Serie
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="font-medium text-md md:text-sm text-gray-800">{{record.serie}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-center h-0">
+    <hr class=" w-full">
+  </div>
+
+
+
+</div>

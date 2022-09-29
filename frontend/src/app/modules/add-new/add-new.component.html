@@ -1,0 +1,29 @@
+<app-header *ngIf="dataInitialized" [title]="(stepState$ | async). currentStep.Title" (exitEvent)="showRecordAlert()"
+  [inModule]="true"></app-header>
+<ion-content [fullscreen]=true  class="bg-gray-900 flex flex-col w-full  justify-center align-items-start font-mono" *ngIf="model && !checkHelp && (stepState$ | async) as stepState">
+  <app-input-compressor [@inOutAnimation] *ngIf="stepState. currentStep.Key === 'R_S_1'"
+    [validationIssues]="validationIssues" [compresores]="compresores" (openQRHelp)="seeQrHelp()"></app-input-compressor>
+  <app-compressor-information [@inOutAnimation] *ngIf="stepState. currentStep.Key === 'R_S_2'" [compresores]="compresores"
+    [validationIssues]="validationIssues"></app-compressor-information>
+  <app-invoice-information [@inOutAnimation] [distributors]="distributors" *ngIf="stepState. currentStep.Key === 'R_S_3'"
+    [validationIssues]="validationIssues"></app-invoice-information>
+  <app-client-information [@inOutAnimation] *ngIf="stepState. currentStep.Key === 'R_S_4'"
+    [validationIssues]="validationIssues"></app-client-information>
+  <app-checklist [@inOutAnimation] *ngIf="stepState. currentStep.Key === 'R_S_5'" [validationIssues]="validationIssues">
+  </app-checklist>
+  <app-range-check [@inOutAnimation] *ngIf="stepState. currentStep.Key === 'R_S_6'" [validationIssues]="validationIssues">
+  </app-range-check>
+  <app-warranty-check [@inOutAnimation] *ngIf="stepState. currentStep.Key === 'R_S_7'"></app-warranty-check>
+</ion-content>
+<ion-content class="bg-gray-900 flex flex-col w-full  justify-center align-items-start font-mono" *ngIf="checkHelp">
+  <app-qr-help [@inOutAnimation] *ngIf="checkHelp" (returnEvent)="returnEvent()" [title]="'REGISTRO DE EQUIPO'"
+  [subtitle]="'En todos los compresores Invotech encontrarás un Código QR'" [img]="'assets/img/qr-example.png'">
+  </app-qr-help>
+</ion-content>
+<ion-footer *ngIf="dataInitialized && !checkHelp">
+  <lib-bottom-buttons [showButtons]="true" [isDisabled]="false" [disableBackButton]="disableBackButton"
+    [nextbuttonTitle]="(stepState$ | async). currentStep.NextButtonTitle" (back)="moveToStep(-1,'previous')"
+    (next)="moveToStep()"></lib-bottom-buttons>
+</ion-footer>
+
+

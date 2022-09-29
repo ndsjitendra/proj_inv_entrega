@@ -1,0 +1,22 @@
+<app-header title="Registros" [inModule]="true" (exitEvent)="exit()"></app-header>
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div *ngIf="dataInitialized && records && records.length">
+      <div class="-mb-5 p-3 ">
+        <p class="text-xl w-11/12 text-gray-600">Registros Pasados</p>
+      </div>
+      <div *ngFor="let record of records" class="mb-0" (click)="goToRecord(record)">
+        <app-record-card [record]="record"></app-record-card>
+      </div>
+      <ion-infinite-scroll  (ionInfinite)="loadNextRecords($event)">
+        <ion-infinite-scroll-content loadingText="Cargando...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+  </div>
+  <div class="text-center" *ngIf="!dataInitialized || (records && records.length<1)">
+    <p class="text-xl text-gray-600">No se encontró ninguna garantía</p>
+  </div>
+</ion-content>

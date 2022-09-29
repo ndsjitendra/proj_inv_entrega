@@ -1,0 +1,45 @@
+<ion-header class="bg-gray-600">
+  <ion-toolbar class="font-mono background-color text-center border-b-2 ">
+    <div class="d-flex">
+      <ion-title class="text-white " >Modelo: {{ compressor.modelo }}</ion-title>
+      <ion-icon class="pr-2 text-white" style="font-size:24px" name="close"  (click)="close()"></ion-icon>
+    </div>  
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="h-4/5 overflow-y-scroll">
+  <ion-list no-lines inset="true" class="list-container py-0">
+    <ion-item>
+      <div class="flex flex-column">
+        <ion-label>Aplicación:</ion-label>
+        <p class="mt-1">{{compressor.aplicacion}}</p>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>BTU</ion-label>
+      <ion-text>{{compressor.btu}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Refrigerante</ion-label>
+      <ion-text>{{compressor.refrigerante}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>HP</ion-label>
+      <ion-text>{{compressor.hp}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fases</ion-label>
+      <ion-text>{{compressor.fases}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Conexión</ion-label>
+      <ion-text>{{compressor.conexion}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Voltaje</ion-label>
+      <ion-text>{{compressor.voltaje}}</ion-text>
+    </ion-item>
+  </ion-list>
+</div>
+</ion-content>
+

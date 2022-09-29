@@ -1,0 +1,23 @@
+<div class="h-full w-full p-2 border-black border rounded-md">
+  <ion-item>
+    <ion-label>
+      <h1>Recompensas</h1>
+    </ion-label>
+  </ion-item>
+
+  <div class="title-container border-b-2 flex flex-column p-2">
+    <h1 class="font-bold" style="font-size:24px">Cantidad Debida: $ {{totalAmountOwned}}</h1>
+    <h1 class="font-bold" style="font-size:18px">Cantidad Pagada: ${{totalAmountPayed}}</h1>
+    <div class="w-full">
+      <p class="font-md">Fecha de Actualización:
+        <span>{{compareDateLesserThan | date: dateFormat }}</span>
+      </p>
+    </div>
+  </div>
+
+  <section class="w-full flex justify-center mt-2">
+    <section class="w-4/5">
+      <ion-button expand="full" (click)="goToPayments()">Ir a Pagos</ion-button>
+    </section>
+  </section>
+</div>

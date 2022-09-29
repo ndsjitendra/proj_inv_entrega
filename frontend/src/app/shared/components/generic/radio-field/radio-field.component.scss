@@ -1,0 +1,73 @@
+:host {
+  .color-gray {
+    color: var(--ion-color-gray);
+  }
+
+  .required-missing-color {
+    color: #dc3545;
+  }
+
+  i {
+    margin-left: 5px;
+  }
+
+  .custom-radio-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    label {
+      align-items: center;
+      border-radius: 0;
+      background: white;
+      color: var(--ion-color-gray);
+      border: 1px solid #ced4da;
+      display: flex;
+      font-size: 16px;
+      font-weight: 700;
+      height: 38px;
+      margin-bottom: 0;
+      padding: 0.5rem 0;
+      text-align: left;
+
+      input {
+        visibility: hidden;
+      }
+
+      i {
+        font-size: 26px;
+        float: left;
+        margin-left: 0rem;
+        margin-right: 1rem;
+        margin-top: 0rem;
+      }
+
+      &.active {
+        border: 1px solid var(--ion-color-primary);
+        color: black;
+        i {
+          color: var(--ion-color-primary);
+        }
+      }
+
+      &.horizontal {
+        padding: 1.3rem;
+        width: 315px;
+        font-size: 1.2rem;
+        font-weight: 700;
+
+        i {
+          font-size: 2.3rem;
+        }
+      }
+
+      &.label-disabled {
+        background: #EBEBEB;
+        border-color: #BDC0C1;
+        color: var(--ion-color-gray);
+        i {
+          color: var(--ion-color-gray);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.color-gray {
+  color: var(--ion-color-gray);
+}
+
+ng-select {
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+
+}
+
+.required-missing-color {
+  color: #dc3545;
+}
+
+i {
+  margin-left: 5px;
+}
+
+.ng-select.custom ::ng-deep .ng-select-container {
+  height: 38px !important;
+  border-radius: 0 !important;
+}
+
+.ng-select.custom.greyed-out ::ng-deep .ng-select-container {
+  background: #EBEBEB !important;
+  border: 1px solid #BDC0C1 !important;
+}
+
+.ng-select.custom ::ng-deep .ng-select-container:hover {
+  box-shadow: none !important;
+}
+
+.ng-select.custom ::ng-deep .ng-clear-wrapper {
+  display: none !important;
+}
+

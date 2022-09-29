@@ -1,0 +1,79 @@
+<app-header title="Home"></app-header>
+<!-- <div *ngIf="user" class="h-full"> -->
+<ion-content *ngIf="dataInitialized" class="h-full">
+
+  <div *ngIf="swiper && swiper.swiperRef && dataInitialized" class="h-4/5 w-full" style="padding:15px;">
+    <app-stats-tile [@inOutAnimation] *ngIf="swiper.swiperRef.realIndex === 0" (goToStatsClicked)="goToStats()" [recordStats]="recordStats" [compareDateBiggerThan]="firstDate" [compareDateLesserThan]="lastDate"></app-stats-tile>
+    <app-record-list-tile [@inOutAnimation] [recordList]="recordList" *ngIf="swiper.swiperRef.realIndex === 1" (goToRecordHistoryClicked)="goToRecords()" (viewRecordClicked)="goToRecord($event)"></app-record-list-tile>
+    <app-register-tile [@inOutAnimation] *ngIf="swiper.swiperRef.realIndex === 2" (goToRegisterClicked)="goToAddNew()"></app-register-tile>
+    <app-payments-tile [@inOutAnimation] *ngIf="swiper.swiperRef.realIndex === 3" (goToPaymentClicked)="goToPayments()" [paymentInformation]="paymentInformation" [compareDateLesserThan]="currentDate"></app-payments-tile>
+    <app-user-tile [@inOutAnimation] *ngIf="swiper.swiperRef.realIndex === 4" [user]="user" (goToUserPageEvent)="goToUserPage()"></app-user-tile>
+    <app-help-tile [@inOutAnimation] *ngIf="swiper.swiperRef.realIndex === 5" (goToHelpClicked)="goToHelp()"></app-help-tile>
+  </div>
+    <div *ngIf="dataInitialized" class="swiper-container bg-gray-600 rounded-t">
+      <swiper #swiper class="w-full h-full swiper" [config]="swiperConfig" (swiper)="onSwiper()" (slideChange)="onSlideChange()">
+        <ng-template class="mt-2" swiperSlide let-data>
+          <div class="option-container" (click)="moveToSlide(data)">
+            <div style="margin-bottom:35px" class="swiper-card flex flex-column justify-center" (click)="moveToSlide(data)">
+              <div class="text-center">
+                <ion-icon class="text-white" style="font-size:32px;" name="bar-chart-outline" (click)="moveToSlide(data)"></ion-icon>
+              </div>
+              <ion-label class="text-lg text-white">Estadísticas</ion-label>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template class="mt-2" swiperSlide let-data >
+          <div class="option-container" (click)="moveToSlide(data)">
+            <div style="margin-bottom:35px" class="swiper-card flex flex-column justify-center" (click)="moveToSlide(data)">
+              <div class="text-center" (click)="moveToSlide(data)">
+                <ion-icon class="text-white" style="font-size:32px;" name="document-text-outline" (click)="moveToSlide(data)"></ion-icon>
+              </div>
+              <ion-label class="text-lg text-white">Hist / RC</ion-label>
+            </div>
+          </div>
+
+        </ng-template>
+        <ng-template class="mt-2" swiperSlide let-data >
+          <div class="option-container" (click)="moveToSlide(data)">
+            <div style="margin-bottom:35px" class="swiper-card flex flex-column justify-center" (click)="moveToSlide(data)">
+              <div class="text-center" (click)="moveToSlide(data)">
+                <ion-icon class="text-white" style="font-size:32px;" name="add-circle-outline" (click)="moveToSlide(data)"></ion-icon>
+              </div>
+              <ion-label class="text-lg text-white">Registrar</ion-label>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template class="mt-2" swiperSlide let-data >
+          <div class="option-container" (click)="moveToSlide(data)">
+            <div style="margin-bottom:35px" class="swiper-card flex flex-column justify-center" (click)="moveToSlide(data)">
+              <div class="text-center" >
+                <ion-icon class="text-white" style="font-size:32px;" name="cash-outline" (click)="moveToSlide(data)"></ion-icon>
+              </div>
+              <ion-label class="text-lg text-white">Pagos</ion-label>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template class="mt-2" let-data swiperSlide >
+          <div class="option-container" (click)="moveToSlide(data)">
+            <div style="margin-bottom:35px" class="swiper-card flex flex-column justify-center" (click)="moveToSlide(data)">
+              <div class="text-center">
+                <ion-icon class="text-white" style="font-size:32px;" name="person-circle-outline" (click)="moveToSlide(data)"></ion-icon>
+              </div>
+              <ion-label class="text-lg text-white">Usuario</ion-label>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template class="mt-2" let-data swiperSlide >
+          <div class="option-container" (click)="moveToSlide(data)">
+            <div style="margin-bottom:35px" class="swiper-card flex flex-column justify-center" (click)="moveToSlide(data)">
+              <div class="text-center">
+                <ion-icon class="text-white" style="font-size:32px;" name="help-circle-outline" (click)="moveToSlide(data)"></ion-icon>
+              </div>
+              <ion-label class="text-lg text-white">Ayuda</ion-label>
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+    </div>
+    </ion-content>
+

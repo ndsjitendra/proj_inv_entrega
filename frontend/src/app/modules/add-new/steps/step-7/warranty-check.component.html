@@ -1,0 +1,22 @@
+<!--SECCION 4-->
+<div *ngIf="dataInitialized" class="flex justify-center flex-column p-3">
+  <div *ngIf="addNewForm.value.tipoGarantia ==='total'"
+    class="bg-blue-500 rounded-md p-2 d-flex align-content-center justify-center text-center flex-col">
+    <p class="text-2xl font-bold text-white"> Tu garantía ha sido activada!</p>
+  </div>
+  <div *ngIf="addNewForm.value.tipoGarantia ==='condicionada'"
+    class="bg-red-700 rounded-md p-2 d-flex align-content-center justify-center text-center flex-col">
+    <div>
+      <p class="text-2xl font-bold text-white"> Existe un valor fuera de rango, esta garantía esta condicionada!</p>
+    </div>
+    <div>
+      <p class="text-small font-bold text-white">Para mas información contactar a un administrador</p>
+    </div>
+  </div>
+  <!-- <div class="text-center mt-3 bg-gray-300 rounded-md p-2">
+    <p class="text-center text-2xl font-bold">Descargar certificado Invotech</p>
+    <div class="p-2 d-flex align-content-center justify-center mb-2 text-4xl">
+      <ion-icon name="cloud-download-outline" size="xl"></ion-icon>
+    </div>
+  </div> -->
+  <p class="text-center text-lg font-bold mt-1">Se ha enviado un correo del certificado al cliente</p>

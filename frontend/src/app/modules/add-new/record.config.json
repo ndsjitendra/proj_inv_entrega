@@ -1,0 +1,39 @@
+{
+  "Steps": [
+    {
+      "Key": "R_S_1",
+      "Title": "Modo de Ingreso",
+      "NextButtonTitle": "Siguiente: Información del Compresor"
+    },
+    {
+      "Key": "R_S_2",
+      "Title": "Compresor",
+      "NextButtonTitle": "Siguiente: Factura"
+    },
+    {
+      "Key": "R_S_3",
+      "Title": "Factura",
+      "NextButtonTitle": "Siguiente: Información del Cliente"
+    },
+    {
+      "Key": "R_S_4",
+      "Title": "Información del Cliente",
+      "NextButtonTitle": "Siguiente: Confirmar"
+    },
+    {
+      "Key": "R_S_5",
+      "Title": "Confirmar",
+      "NextButtonTitle": "Siguiente: Hoja de Arranque"
+    },
+    {
+      "Key": "R_S_6",
+      "Title": "Hoja de Arranque",
+      "NextButtonTitle": "Siguiente: Finalizar"
+    },
+    {
+      "Key": "R_S_7",
+      "Title": "Garantía",
+      "NextButtonTitle": "Regresar: Pantalla Principal"
+    }
+  ]
+}

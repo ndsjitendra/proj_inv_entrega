@@ -1,0 +1,19 @@
+.title-container {
+  display: flex;
+  align-items: start;
+  margin:10px;
+}
+
+.date-filter-container {
+  margin-bottom:-1rem;
+}
+
+.chart { 
+  display: block; 
+  height: 100%; 
+}
+
+ion-toolbar {
+  --background-color:transparent;
+  --ion-color-base: transparent !important;
+}

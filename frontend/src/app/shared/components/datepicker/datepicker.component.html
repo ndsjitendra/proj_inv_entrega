@@ -1,0 +1,10 @@
+<div class="datepicker" data-cy="datePicker" (click)="picker.open()">
+  <input matInput [ngClass]="{'invalid': dateError}" *ngIf="!isDisabled" matInput (blur)="onBlur()"
+    (change)="onChange()" (keyup.enter)="onEnter()" (focusout)="onFocusOut()" (dateChange)="onDateChange($event)"
+    [matDatepicker]="picker" [max]="maxDate" [min]="minDate" (click)="picker.open()" placeholder="Elegir una fecha"
+    class="form-control rounded-0 icon" [value]="_date" [(ngModel)]="dateText">
+  <mat-datepicker-toggle matSuffix [for]="picker">
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</div>
+

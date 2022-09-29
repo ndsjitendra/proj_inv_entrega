@@ -1,0 +1,21 @@
+<div class="p-2">
+  <div class="grid grid-rows-2 grid-cols-3 grid-flow-col gap-0 p-2 bg-gray-200 shadow-md rounded-md ">
+    <div class="row-span-3 col-span-1 flex h-full align-items-center"><img
+        class="rounded-xl  h-24 w-24 mx-auto " [src]="user.foto" alt="" />
+    </div>
+    <div class="col-span-2 mt-2 text-center">
+      <div class="font-medium text-xl md:text-lg text-gray-800 truncate">{{user.nombre + " " + user.apellido}}</div>
+    </div>
+    <div class="row-span-2 col-span-2 ">
+      <div class="row ">
+        <div class="col-12 text-center">
+          <div class="text-gray-500 text-sm md:text-xs whitespace-nowrap">{{user.actividad}}</div>
+        </div>
+          <div class="col-12 text-center">
+            <div class="font-medium text-md md:text-sm text-gray-800">Matrícula: <span class="font-bold">{{user.matricula}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

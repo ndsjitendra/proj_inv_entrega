@@ -1,0 +1,296 @@
+<div class="min-h-full w-full bg-gray-600 p-5">
+  <div class="p-5 bg-gray-200 shadow rounded-md ">
+    <h1 *ngIf="newUserCheck || user" class="text-2xl">
+      <span *ngIf="editCheck && !newUserCheck">Editando: </span>
+      <span *ngIf="editCheck && newUserCheck">Nuevo </span>
+      Usuario
+    </h1>
+    <div *ngIf="user">
+      <div class="row" *ngIf="dataInitialized && !editCheck">
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Nombre</label>
+          </div>
+          {{user.nombre +" "+ user.apellido}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Teléfono</label>
+          </div>
+          {{user.telefono}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Usuario</label>
+          </div>
+          {{user.username}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Matricula</label>
+          </div>
+          {{user.matricula}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Estado</label>
+          </div>
+          {{user.estado}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Ciudad</label>
+          </div>
+          {{user.ciudad}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Código Postal</label>
+          </div>
+          {{user.cp}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Calle y Número</label>
+          </div>
+          {{user.calleYnum}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Actividad</label>
+          </div>
+          {{user.actividad}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Experiencia</label>
+          </div>
+          {{user.experiencia}}
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold">Utilizado Compresor</label>
+          </div>
+          <p class="text-uppercase">{{user.utilizadoCompresor}}</p>
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold text-uppercase">Recibir Información</label>
+          </div>
+          <p class="text-uppercase">{{user.recibirInformacion}}</p>
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold text-uppercase">Persona</label>
+          </div>
+          <p class="text-uppercase">{{user.persona}}</p>
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold text-uppercase">RFC</label>
+          </div>
+          <p class="text-uppercase">{{user.rfc}}</p>
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold text-uppercase"># de Tarjeta</label>
+          </div>
+          <p class="text-uppercase">{{user.tarjeta}}</p>
+        </div>
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold text-uppercase">CLABE</label>
+          </div>
+          <p class="text-uppercase">{{user.clabe}}</p>
+        </div>
+        <!-- <div class="col-1"></div> -->
+        <div class="col-6">
+          <div>
+            <label class="text-xl font-bold text-uppercase">Fotografía</label>
+          </div>
+          <img [src]="user.foto" width="250" height="250">
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="userForm" *ngIf="dataInitialized && (editCheck || newUserCheck)">
+      <div class="row">
+        <div class="col-5 mb-2">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.nombre || userForm.value.nombre === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Nombre</label>
+          </div>
+          <input [disabled]="editCheck && !newUserCheck" id="modelo" formControlName="nombre" autocomplete="disabled"
+            type="text" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.nombre" placeholder="Ingresar nombre" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.telefono || userForm.value.telefono === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Apellido</label>
+          </div>
+          <input id="apellido" formControlName="apellido" autocomplete="disabled" type="text" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.apellido" placeholder="Ingresar apellido" required autofocus>
+        </div>
+        <div class="col-5">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.telefono || userForm.value.telefono === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Teléfono</label>
+          </div>
+          <input id="btu" formControlName="telefono" autocomplete="disabled" type="text" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.telefono" placeholder="Ingresar teléfono" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5 mb-2">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.username || userForm.value.username === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Usuario</label>
+          </div>
+          <input id="username" formControlName="username" autocomplete="disabled" type="email" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.username" placeholder="Ingresar usuario" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div *ngIf="userForm.controls.password" class="col-5 mb-2">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.password || userForm.value.password === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Contraseña</label>
+          </div>
+          <input id="password" formControlName="password" autocomplete="disabled" type="password" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.password" placeholder="Ingresar contraseña" required autofocus>
+        </div>
+        <div *ngIf="userForm.controls.password" class="col-1"></div>
+        <div class="col-5">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.fases || userForm.value.fases === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Estado</label>
+          </div>
+          <input id="estado" formControlName="estado" autocomplete="disabled" type="text" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.estado" placeholder="Ingresar estado" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.hp || userForm.value.hp === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Ciudad</label>
+          </div>
+          <input id="hp" formControlName="ciudad" autocomplete="disabled" type="text" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.ciudad" placeholder="Ingresar ciudad" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5 mb-2">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.cp || userForm.value.cp === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Código Postal</label>
+          </div>
+          <input id="cp" formControlName="cp" autocomplete="disabled" type="text" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.cp" placeholder="Ingresar código postal" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.calleYnum || userForm.value.calleYnum === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Calle y Número</label>
+          </div>
+          <input id="calleYnum" formControlName="calleYnum" autocomplete="disabled" type="text" (change)="change()"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            [value]="userForm.value.calleYnum" placeholder="Ingresar calle y número" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5 mb-2">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.actividad || userForm.value.actividad === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Actividad</label>
+          </div>
+          <mat-select
+            class="bg-gray-600 shadow  w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white"
+            formControlName="actividad" placeholder="Seleccionar Actividad" [value]="userForm.value.actividad"
+            (selectionChange)="changeSelect($event, 'actividad')">
+            <mat-option class="py-1" value="Técnico Independiente">Técnico Independiente</mat-option>
+            <mat-option class="py-1" value="Empresa de Mtto. y Servicio">Empresa de Mtto. y Servicio</mat-option>
+          </mat-select>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.experiencia || userForm.value.experiencia === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">Experiencia</label>
+          </div>
+          <input type="text" id="experiencia" formControlName="experiencia" autocomplete="disabled"
+            [value]="userForm.value.experiencia"
+            class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+            mask='0?0' placeholder="Ingresar experiencia (años)" required autofocus>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5 mb-2">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.utilizadoCompresor || userForm.value.utilizadoCompresor === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">¿Has utilizado el compresor Invotech anteriormente?</label>
+          </div>
+          <mat-select
+            class="bg-gray-600 shadow  w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white"
+            formControlName="utilizadoCompresor" placeholder="Seleccionar Actividad"
+            [value]="userForm.value.utilizadoCompresor" (selectionChange)="changeSelect($event,'utilizadoCompresor')">
+            <mat-option class="py-1" value="si">Si</mat-option>
+            <mat-option class="py-1" value="no">No</mat-option>
+          </mat-select>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5 mb-2">
+          <div>
+            <label
+              [ngClass]="{'required-value-missing': (!userForm.value.experiencia || userForm.value.experiencia === '') && validationIssues && (editCheck || newUserCheck)}"
+              class="text-xl font-bold">¿Quieres recibir información de parte de Invotech?</label>
+          </div>
+          <mat-select
+            class="bg-gray-600 shadow  w-full rounded py-2 px-3 leading-tight focus:outline-none text-over truncate text-white"
+            formControlName="recibirInformacion" placeholder="¿Deseas recibir información?"
+            [value]="userForm.value.recibirInformacion" (selectionChange)="changeSelect($event,'recibirInformacion')">
+            <mat-option class="py-1" value="si">Si</mat-option>
+            <mat-option class="py-1" value="no">No</mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </form>
+    <app-alert class="alert-position" *ngIf="showAlert" [type]="alertType" [message]="alertMessage">
+    </app-alert>
+    <div class="p-5" *ngIf="!dataInitialized && !editCheck &&  !newUserCheck">
+      <div class="p-5 text-center">
+        <p class="text-2xl">No se selecciono usuario!</p>
+      </div>
+      </div>
+  </div>
+
+  <div class="m-5 h-32 d-flex justify-center align-items-center" [ngClass]="{'submit-check': submitCheck}">
+    <button *ngIf="!editCheck || newUserCheck" class="rounded-md text-xl w-32 bg-gray-500 p-3 m-3"
+      (click)="regresar()">Regresar</button>
+    <button *ngIf="!editCheck && user" class="rounded-md text-xl w-32 bg-blue-500 p-3 m-3"
+      (click)="editar()">Editar</button>
+    <button *ngIf="editCheck && !newUserCheck && user" class="rounded-md text-xl w-32 bg-red-500 p-3 m-3"
+      (click)="cancelEdit()">Cancelar Edición</button>
+    <button *ngIf="editCheck && !newUserCheck" class="rounded-md text-xl w-32 bg-green-500 p-3 m-3"
+      (click)="submit('edit')">Confirmar Edición</button>
+    <button *ngIf="editCheck && newUserCheck" class="rounded-md text-xl w-auto bg-green-500 p-3 m-3"
+      (click)="submit('new')">Confirmar Creación de user</button>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<form *ngIf="dataInitialized" [formGroup]="addNewForm">
+  <div class="px-4 pt-2 pb-4 mb-2 mt-2">
+    <div class="container mt-6 text-center ">
+      <p class="text-4xl" [ngClass]="{'required-missing-color': validationIssues && !scannedQR}"> REGISTRO DE EQUIPO</p>
+      <div class="row">
+        <div class="col-12 p-2">
+          <label class="text-lg">Haz click y Escanea el Código QR que viene en el compresor</label>
+          <div class="text-right">
+            <i class="fa fa-question-circle fa-2x" (click)="seeQrHelp()" aria-hidden="true"></i>
+          </div>
+          <div class="d-flex justify-center align-items-center text-4xl">
+            <ion-icon name="qr-code-outline" size="xl" (click)="scanQR()"></ion-icon>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="scannedQR !validationIssues" class="row text-center ">
+        <div class="col-12 text-green-500 text-xl"> Código Escaneado! </div>
+      </div>
+      <div *ngIf="!scannedQR && !noCompressorFound && validationIssues" class="col-12 text-red-500"> Código no
+        Escaneado! </div>
+      <div *ngIf="noCompressorFound && validationIssues" class="col-12 text-red-500"> Modelo no Existe! </div>
+    </div>
+    <div *ngIf="needQRScanner" class="col-12 text-red-500"> Se necesita utilizar la cámara </div>
+  </div>
+</form>

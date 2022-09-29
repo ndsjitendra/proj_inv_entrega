@@ -1,0 +1,74 @@
+<app-header title="Registro" [inModule]="true" (exitEvent)="exit()"></app-header>
+<ion-content >
+  <div *ngIf="record" class="h-full w-full p-2 border-black border rounded-md">
+    <ion-item class="px-2">
+      <ion-label>
+        <h1>Serie: {{ record.serie }}</h1>
+        <p class="font-bold">Modelo: {{record.modelo}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-list no-lines inset="true" class="list-container py-0">
+      <ion-item>
+        <ion-label># de Garantía</ion-label>
+        <ion-text>{{record.garantia}}</ion-text>
+      </ion-item>
+      <ion-item class="w-full">
+        <ion-label>Ver Garantía</ion-label>
+        <ion-button (click)="getRecordPDF()" >Descargar</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>Estatus</ion-label>
+        <ion-text>{{status}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha de Compra</ion-label>
+        <ion-text>{{record.fechaCompra | date:dateFormat}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nombre Cliente </ion-label>
+        <ion-text>{{record.nombreCliente}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Teléfono Cliente </ion-label>
+        <ion-text>{{record.telefonoCliente}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Estado Cliente</ion-label>
+        <ion-text>{{record.estadoCliente}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Distribuidor</ion-label>
+        <ion-text>{{record.distribuidor}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Sucursal</ion-label>
+        <ion-text>{{record.sucursal}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Vendedor</ion-label>
+        <ion-text>{{record.vendedor}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Compresor Cliente</ion-label>
+        <ion-text>{{record.modeloCompresorCliente}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nuevo Compresor</ion-label>
+        <ion-text>{{record.modeloCompresorCliente}}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Máquina Cliente</ion-label>
+        <ion-text>{{record.maquinaCliente}}</ion-text>
+      </ion-item>
+    </ion-list>
+    <section class="w-full flex justify-center">
+      <section class="w-4/5">
+        <ion-button *ngIf="record.status !=='EN RECLAMO'" expand="full" (click)="reportIssue()">Levantar Reclamo</ion-button>
+        <ion-button *ngIf="record.status ==='EN RECLAMO'"  expand="full" color="danger" disabled>RECLAMO EN REVISIÓN</ion-button>
+      </section>
+    </section>
+  </div>
+  <div *ngIf="!record" class="text-center">
+    <p class="font-bold">No existe el registro</p>
+  </div>
+</ion-content>

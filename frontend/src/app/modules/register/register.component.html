@@ -1,0 +1,167 @@
+<div class="bg-gray-900	flex flex-col w-full h-full justify-center align-items-center font-mono">
+  <div class="row" style="width:100%; align-items:center; display:flex;">
+    <div class="col-1">
+      <i class="fa fa-chevron-left fa-2x text-white" (click)="returnBack()"></i>
+    </div>
+    <div class="col d-flex justify-center align-items-center">
+      <h1 class=" text-white text-center mt-2">Registro</h1>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class=" w-11/12 h-5/6 bg-white shadow-md rounded mb-3 overflow-scroll">
+    <form [formGroup]="registerForm">
+      <div class="px-4 pt-2 pb-4 mb-2 mt-2">
+        <!--SECCION 1-->
+        <div *ngIf="step === 1">
+          <div class="container">
+            <app-input-field formControlName="nombre" label="Nombre" placeholder="Ingresar nombre/s" [isRequired]="true"
+              [autoScroll]="true" [isValidated]="validationIssues && !registerForm.controls.nombre.valid">
+            </app-input-field>
+          </div>
+          <div class="container">
+            <app-input-field formControlName="apellido" label="Apellido" placeholder="Ingresar apellido/s"
+              [isRequired]="true" [autoScroll]="true"
+              [isValidated]="validationIssues && !registerForm.controls.apellido.valid"></app-input-field>
+          </div>
+          <div class="container">
+            <app-phone-field formControlName="telefono" label="Teléfono"
+              [isValidated]="validationIssues && !registerForm.controls.telefono.valid" placeholder="Ingresar teléfono"
+              [autoScroll]="true" [isRequired]="true" [maxlength]="10" [minlength]="10"></app-phone-field>
+          </div>
+          <div class="container">
+            <app-select-field formControlName="estado" label="Estado" [autoScroll]="true" [isRequired]="true"
+              placeholder="Seleccionar Estado" [optionList]="estados"
+              [isValidated]="validationIssues && !registerForm.controls.estado.valid"></app-select-field>
+          </div>
+          <div class="container">
+            <app-input-field formControlName="ciudad" label="Ciudad" placeholder="Ingresar ciudad" [isRequired]="true"
+              [autoScroll]="true" [isValidated]="validationIssues && !registerForm.controls.ciudad.valid">
+            </app-input-field>
+          </div>
+          <div class="container">
+            <app-input-field formControlName="cp" type="number" label="Código
+            postal" placeholder="Ingresar Código Postal" [isRequired]="true" [autoScroll]="true"
+              [isValidated]="validationIssues && !registerForm.controls.cp.valid" [minlength]="5" [max]="99999"
+              [min]="00000"></app-input-field>
+          </div>
+          <div class="container">
+            <app-input-field formControlName="calleYNum" label="Calle
+            y Número" placeholder="Ingresar calle y número" [isRequired]="true" [autoScroll]="true"
+              [isValidated]="validationIssues && !registerForm.controls.calleYNum.valid"></app-input-field>
+          </div>
+        </div>
+        <!--FIN DE SECCION 1-->
+        <!--SECCION 2-->
+        <div *ngIf="step===2">
+          <div class="container">
+            <app-radio-field label="Persona moral/física" formControlName="persona" [options]="personaOptions"
+              [isRequired]="true" [isValidated]="validationIssues && !registerForm.controls.persona.valid">
+            </app-radio-field>
+          </div>
+          <div class="container">
+            <app-select-field formControlName="banco" label="Banco" [autoScroll]="true" [isRequired]="true"
+              placeholder="Seleccionar Banco" [optionList]="bancos"
+              [isValidated]="validationIssues && !registerForm.controls.banco.valid"></app-select-field>
+          </div>
+          <div class="container">
+            <app-input-field label="# de Tarjeta" formControlName="tarjeta" type="number" [max]="9999999999999999"
+              [minlength]="16" [maxlength]="16" [isRequired]="true"
+              [isValidated]="validationIssues && !registerForm.controls.tarjeta.valid"></app-input-field>
+          </div>
+          <div class="container">
+            <app-input-field label="CLABE" formControlName="clabe" [minlength]="18" [maxlength]="18"
+              [isValidated]="validationIssues && !registerForm.controls.clabe.valid"></app-input-field>
+          </div>
+          <div class="container">
+            <app-input-field label="RFC" formControlName="rfc" [minlength]="12"
+              [maxlength]="registerForm.controls.persona?.value==='moral' ? 12 : 13" [isRequired]="true"
+              [isValidated]="validationIssues && !registerForm.controls.rfc.valid"></app-input-field>
+          </div>
+        </div>
+        <!--SECCION 3-->
+        <div *ngIf="step === 3">
+          <div class="container">
+            <app-select-field formControlName="actividad" label="Seleccionar
+            Actividad" [autoScroll]="true" [isRequired]="true" placeholder="Seleccionar Actividad"
+              [optionList]="actividadOptions"
+              [isValidated]="validationIssues && !registerForm.controls.actividad.valid"></app-select-field>
+          </div>
+          <div class="container">
+            <app-input-field label="Experiencia" formControlName="experiencia" type="number" [minlength]="1" [maxlength]="2"
+              [isRequired]="true" [isValidated]="validationIssues && !registerForm.controls.experiencia.valid">
+            </app-input-field>
+          </div>
+          <div class="container">
+            <app-select-field formControlName="utilizadoCompresor" label="¿Has
+            utilizado el compresor Invotech anteriormente?" [autoScroll]="true" [isRequired]="true"
+              placeholder="¿Haz utilizado Invotech?" [optionList]="yesNoOptions"
+              [isValidated]="validationIssues && !registerForm.controls.utilizadoCompresor.valid"></app-select-field>
+          </div>
+          <div class="container">
+            <app-select-field formControlName="recibirInformacion" label="¿Quieres
+            recibir información de parte de Invotech?" [autoScroll]="true" [isRequired]="true"
+              placeholder="¿Recibir información?" [optionList]="yesNoOptions"
+              [isValidated]="validationIssues && !registerForm.controls.recibirInformacion.valid"></app-select-field>
+          </div>
+        </div>
+        <!--FIN DE SECCION 3-->
+        <!--SECCION 4-->
+        <div *ngIf="step===4">
+          <div class="container mt-6">
+            <app-camera-field formControlName="foto" (deletePhotoEvent)="deletePhoto()" [isRequired]="true"
+              label="Añada su foto de perfil" [isValidated]="validationIssues && !registerForm.controls.foto.valid"
+              setValueLabel="Foto de perfil"></app-camera-field>
+          </div>
+        </div>
+        <!--FIN DE SECCION 4-->
+        <!--SECCION 5-->
+        <div *ngIf="step===5">
+          <div class="container">
+            <app-input-field formControlName="username" label="Usuario (correo)"
+              [isValidated]="validationIssues && !registerForm.controls.username.valid"
+              placeholder="Ingresar usuario (correo)" [autoScroll]="true" [isRequired]="true" [maxlength]="100">
+            </app-input-field>
+          </div>
+          <div class="container">
+            <app-input-field formControlName="password" label="Contraseña" type="password"
+              hint="Contraseña debe incluir al menos una mayúscula, un número y ser de al menos 8 carácteres!"
+              [isValidated]="validationIssues && !registerForm.controls.password.valid" placeholder="Contraseña"
+              [autoScroll]="true" [isRequired]="true" [minlength]="7" [maxlength]="100"></app-input-field>
+          </div>
+          <div class="container">
+            <app-input-field formControlName="confirmarPassword" label="Confirmar
+            Contraseña" type="password"
+              [isValidated]="validationIssues && !registerForm.controls.confirmarPassword.valid"
+              placeholder="Volver a ingresar contraseña" [autoScroll]="true" [isRequired]="true"></app-input-field>
+          </div>
+          <div *ngIf="mismatchPassword || userAlreadyExists" class="container">
+            <p *ngIf="mismatchPassword" class="text-red-700 text-center mt-2 mb-2">Las contraseñas no son iguales!</p>
+            <p *ngIf="mismatchPassword" class="text-red-700 text-center mt-2 mb-2">La contraseña debe tener al menos un
+              número y una letra mayúscula!</p>
+            <p *ngIf="userAlreadyExists" class="text-red-700 text-center mt-2 mb-2">Usuario ya existe!</p>
+          </div>
+          <div class="container mt-2">
+            <app-checkbox-field label="He leido los Avisos de Privacidad y Términos y Condiciones."
+              formControlName="confirmarTerminosPrivacidad" [isRequired]="true"></app-checkbox-field>
+          </div>
+          <div class="container mt-5">
+            <ion-button class="w-full" (click)="openPDF('privacy')">Aviso de Privacidad</ion-button>
+            <ion-button class="w-full" (click)="openPDF('terms')">Términos y Condiciones</ion-button>
+          </div>
+        </div>
+        <!--FIN DE SECCION 5-->
+      </div>
+    </form>
+  </div>
+  <div class="w-full" style="display: flex; justify-content:center">
+    <button type="button" *ngIf="step !== 1"
+      class="shadow appearance-none w-1/4  rounded p-2 m-2  leading-tight bg-red-500 mb-3"
+      (click)="returnStep()">Atras</button>
+    <button type="button" *ngIf="step !==5"
+      class="shadow appearance-none w-3/4  rounded p-2 m-2 leading-tight bg-green-500 mb-3"
+      (click)="validateNext()">Siguiente</button>
+    <button *ngIf="step === 5" type="button"
+      class="shadow appearance-none w-3/4  rounded p-2 m-2 leading-tight bg-green-500 mb-3" type="submit"
+      (click)="register()"> Enviar </button>
+  </div>
+</div>

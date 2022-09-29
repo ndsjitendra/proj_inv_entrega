@@ -1,0 +1,83 @@
+
+:host {
+// Angular Material Table Styles
+.mat-header-row {
+  width: 100%;
+  // background-color: #BFDBFE;
+  // border-color: #BFDBFE;
+  position: sticky;
+  top: 0;
+}
+
+
+
+.mat-header-cell {
+  font-size: 16px;
+  font-weight: bold;
+  color: #34464a;
+}
+
+.mat-row {
+  background-color: #C7D2FE;
+  border-color: #b3b3b3;
+}
+
+.mat-cell {
+  padding: 15px 0 15px 0;
+}
+
+mat-table {
+  max-height:600px;
+  overflow: scroll;
+  overflow-x:hidden;
+  width: 100%;
+  mat-header-row {
+    z-index: 1;
+  }
+
+  mat-header-cell:last-of-type,
+    mat-cell:last-of-type {
+      padding-right: 0;
+    }
+
+  mat-header-cell:first-of-type,
+  mat-cell:first-of-type {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .mat-row:nth-child(even){
+    background-color: #F9FAFB;
+  }
+
+  .mat-row:nth-child(odd){
+    background-color: #EFF6FF;
+  }
+
+  // .mat-column
+}
+
+.filtro-seleccionado{
+  background-color: #34D399;
+}
+
+
+mat-header-cell {
+  .mat-sort-header-container {
+    height: 100%;
+  }
+
+  .mat-sort-header-content {
+    text-align: left;
+    display: block;
+    align-items: center;
+    padding: 5px 0;
+    padding-left: 0;
+    height: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+}

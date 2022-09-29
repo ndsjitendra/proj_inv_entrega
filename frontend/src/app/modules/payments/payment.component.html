@@ -1,0 +1,12 @@
+<app-header [inModule]="true" title="Recompensas" (exitEvent)="exit()"></app-header>
+<ion-content>
+  <div class="title-container border-b-2 flex flex-column p-2">
+    <h1 class="font-bold" style="font-size:24px">Cantidad Debida: $ {{totalAmountOwned}}</h1>
+    <h1 class="font-bold" style="font-size:18px">Cantidad Pagada: ${{totalAmountPayed}}</h1>
+    <div class="w-full">
+      <p class="font-md">Fecha de Actualización:
+        <span>{{filterData.compareDateLesserThan | date: dateFormat }}</span>
+      </p>
+    </div>
+  </div>
+</ion-content>

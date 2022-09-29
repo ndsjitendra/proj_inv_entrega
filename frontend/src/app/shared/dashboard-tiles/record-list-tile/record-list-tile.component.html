@@ -1,0 +1,24 @@
+<div class="h-full w-full p-2 border-black border rounded-md">
+    <ion-item class="title-container border-b-2 " lines="none">
+      <h1>Registros</h1>
+      <ion-icon slot="end" name="receipt-outline" style="font-size:40px"></ion-icon>
+    </ion-item>
+    <ion-grid fixed="true" class="ion-grid-container border-x-2 border-b-2 rounded-sm border-gray-100 py-0 px-2 mt-2">
+      <ion-row class="header-row bg-white">
+        <ion-col size="5">Modelo</ion-col>
+        <ion-col size="5">Realizado</ion-col>
+        <ion-col>Ver</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let record of recordList" class="data-row-container border-b-2 border-gray-400" (click)="viewRecord(record)">
+        <ion-col size="5">{{record.modelo}}</ion-col>
+        <ion-col size="5">{{record.createdAt | date:dateFormat}}</ion-col>
+        <ion-col><ion-icon style="font-size:20px" name="eye-outline"></ion-icon></ion-col>
+      </ion-row>
+    </ion-grid>
+    <section class="w-full flex justify-center mt-2">
+      <section class="w-4/5">
+        <ion-button expand="full" (click)="goToRecordHistory()">Ver Historial</ion-button>
+      </section>
+    </section>
+
+</div>

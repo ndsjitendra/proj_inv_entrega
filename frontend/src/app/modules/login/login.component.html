@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="bg-cyan-800	flex flex-col w-full h-full justify-center align-items-center font-mono">
+    <div class="form-group">
+      <div class="p-2 text-center flex justify-center flex-column">
+        <!-- <i class="fa fa-superpowers fa-5x text-green-500"></i> -->
+        <div class="flex justify-center">
+          <img src="../../../assets/logo.png" />
+        </div>
+      </div>
+      <div class="p-4">
+        <form [formGroup]="loginForm" class="bg-white shadow-md rounded" *ngIf="dataInitialized">
+          <div class="px-8 pt-6 pb-4 mb-2">
+            <div class="container p-2">
+              <label for="user" class="block text-gray-700 text-sm font-bold mb-2">Usuario</label>
+              <input type="email" id="user" formControlName="username"
+                class="bg-gray-600 text-white shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none"
+                placeholder="Ingresar usuario" (change)="changeUser()" required autofocus>
+            </div>
+            <div class="container p-2">
+              <label for="password" class="block text-gray-700 text-sm font-bold ">Password</label>
+              <input type="password" id="password" (change)="changePassword()" formControlName="password"
+                class="bg-gray-600 text-white shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none"
+                placeholder="Password" required>
+            </div>
+          </div>
+          <div class="container p-2 text-center">
+            <button (click)="onSubmit()" type="button"
+              class="shadow appearance-none w-2/4 rounded py-2 px-3 leading-tight bg-green-500 mb-3" type="submit"> LOGIN
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <p *ngIf="credentialsError" class="text-red-700 text-center mt-2 mb-2">Error en los datos ingresados!</p>
+    </div>
+    <button type="button"
+      class="appearance-none w-full rounded leading-tight text-white px-3 py-2 border-none text-decoration-underline mt-2"
+      (click)="toRegister()"> REGISTRAR </button>
+  </div>
+</ion-content>

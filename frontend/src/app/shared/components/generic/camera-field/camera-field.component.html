@@ -1,0 +1,20 @@
+<label *ngIf="showLabel && !value" class="block text-gray-700 text-sm font-bold mb-2" [ngClass]="{'required-missing-color': isValidated}">
+  {{ label }}<span *ngIf="isRequired"> *</span></label>
+<div class="row" *ngIf="!value">
+  <div class="col-12 p-2">
+    <div class="flex justify-center ">
+      <ion-icon [ngClass]="{'small-photo-icon':smallPhoto}" class="text-9xl" name="image-outline" (click)="addImage()"></ion-icon>
+    </div>
+  </div>
+</div>
+<label *ngIf="value && setValueLabel !==''" class="block text-gray-700 text-sm font-bold mb-2" [ngClass]="{'required-missing-color': isValidated}">
+  {{ setValueLabel }}</label>
+<div *ngIf="value && setValueLabel !==''" class="row text-center ">
+  <div class="col-12 h-2/5 w-2/5 flex justify-center ">
+    <img [ngClass]="{'small-photo':smallPhoto}" class="w-7/12 h-4/5" [src]="value">
+  </div>
+  <div class="col-12 text-center">
+    <button [ngClass]="{'small-photo-button':smallPhoto}" class="shadow appearance-none w-2/4  rounded p-2 m-2 leading-tight bg-gray-500 mb-3"
+      (click)="deletePhoto()">Borrar Imagen</button>
+  </div>
+</div>

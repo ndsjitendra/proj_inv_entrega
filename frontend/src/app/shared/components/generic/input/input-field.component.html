@@ -1,0 +1,10 @@
+<label *ngIf="showLabel" class="block text-gray-700 text-sm font-bold mb-2" [ngClass]="{'required-missing-color': isValidated}">
+  {{ label }}<span *ngIf="isRequired"> *</span>
+  <i class="fa fa-question-circle question-mark" *ngIf="hint" [matTooltip]="hint"></i>
+</label>
+<ion-input *ngIf="!disableCheck" [type]="type" [min]="min" [max]="max" [maxlength]="maxlength" [minlength]="minlength"
+  (ionFocus)="focus($event)"
+  [placeholder]="placeholder" (ionChange)="valueChange($event)"  [(ngModel)]="upperCase? value?.toUpperCase() : value" (keypress)="numberOnlyValidation($event)" >
+</ion-input>
+<ion-input *ngIf="disableCheck" [type]="type" disabled class="disabled-input" [(ngModel)]="value"
+  [placeholder]="placeholder"></ion-input>

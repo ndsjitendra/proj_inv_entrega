@@ -1,0 +1,33 @@
+<div class="h-screen w-full bg-gray-600">
+  <div class="h-full d-flex justify-center align-items-center ">
+    <div class="mb-42 h-3/5 p-5 bg-white rounded-md">
+      <div class=" w-full text-center">
+        <i class="fas fa-user-shield fa-7x text-green-300"></i>
+        <h1 class="m-2">Invotech Admin</h1>
+      </div>
+      <form [formGroup]="loginForm">
+        <div class="p-3 mt-4">
+          <div>
+            <input type="email" id="user" formControlName="username" [ngClass]="{'required-missing-color': ''}"
+              class="bg-white text-black appearance-none w-full border-b-2 border-gray-400 py-2 px-3 leading-tight focus:outline-none"
+              placeholder="Ingresar usuario" required autofocus>
+            </div>
+          <div class="mt-3">
+            <input type="password" id="password" formControlName="password" [ngClass]="{'required-missing-color': ''}"
+              class="bg-white text-black appearance-none w-full border-b-2 border-gray-400 py-2 px-3 leading-tight focus:outline-none"
+              placeholder="Ingresar contraseña" required autofocus>
+          </div>
+          </div>
+        <div class="text-center mt-3">
+          <button (click)="onSubmit()" type="button"
+            class="shadow appearance-none w-2/4 rounded py-3 px-3 leading-tight bg-green-500 mb-3" type="submit">
+            LOGIN
+          </button>
+        </div>
+
+      </form>
+      <p *ngIf="credentialsError" class="text-red-700 text-center mt-2 mb-2">Error en los datos ingresados!</p>
+      </div>
+  </div>
+</div>
+

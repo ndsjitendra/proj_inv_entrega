@@ -1,0 +1,4 @@
+<label *ngIf="showLabel" class="block text-gray-700 text-sm font-bold mb-2" [ngClass]="{'required-missing-color': isValidated}">
+  {{ label }}<span *ngIf="isRequired"> *</span>
+</label>
+<app-datepicker (dateChanged)="valueChange($event)" [isDisabled]="isDisabled" [showClearIcon]="showClearIcon" [date]="value" [allowManual]="allowManual"  (focus)="focus($event)" [dateError]="dateError" [minDate]="minDate" [maxDate]="maxDate"></app-datepicker>

@@ -1,0 +1,34 @@
+<app-header title="Ayuda" [inModule]="true" (exitEvent)="exit()"></app-header>
+<ion-content>
+  <div class="">
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          <h1>Compresores</h1>
+          <p class="font-bold">Encuentra tu compresor!</p>
+        </ion-label>
+      </ion-item>
+      <ion-item class="w-full" (click)="enterFilter()">
+        <ion-button class="big-button" style="width:100%; height:50px" (click)="enterFilter()" >Encontrar Compresor</ion-button>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <h1>Instrucciones</h1>
+          <p class="font-bold">Instalación de Compresores!</p>
+        </ion-label>
+      </ion-item>
+      <ion-item class="w-full">
+        <ion-label>Compresor YF</ion-label>
+        <ion-button style="width:50%;" (click)="openHelpPDF('yf')" >Ver</ion-button>
+      </ion-item>
+      <ion-item class="w-full">
+        <ion-label>Compresor YM</ion-label>
+        <ion-button  style="width:50%;" (click)="openHelpPDF('ym')">Ver</ion-button>
+      </ion-item>
+      <ion-item class="w-full">
+        <ion-label>Compresor YH</ion-label>
+        <ion-button  style="width:50%;" (click)="openHelpPDF('yh')" >Ver</ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

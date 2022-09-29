@@ -1,0 +1,64 @@
+<ion-content>
+  <app-header title="Filtrar Compresor" [inModule]="true" (exitEvent)="exit()"></app-header>
+  <!-- <ion-item class="sub-header">
+    <ion-label>
+      <h1>Seleccionar opciones para filtrar</h1>
+    </ion-label>
+  </ion-item> -->
+  <div *ngIf="!checkResults" class="h-4/5 overflow-y-scroll">
+    <div class="px-4 py-4 border-b-2 border-gray-200">
+      <h1>Seleccionar opciones para filtrar</h1>
+    </div>
+    <form [formGroup]="filterForm">
+      <div class="container">
+        <app-select-field formControlName="aplicacion" label="Aplicación" [autoScroll]="true"
+          placeholder="Seleccionar Aplicación" [optionList]="compresorConstants.Aplicacion"></app-select-field>
+      </div>
+      <div class="container">
+        <app-input-field formControlName="btu" label="BTU" [upperCase]="true" [autoScroll]="true"
+          placeholder="Ingresar BTU"></app-input-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="refrigerante" label="Refrigerante" [autoScroll]="true"
+          placeholder="Seleccionar Refrigerante" [optionList]="compresorConstants.Refrigerante"></app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="hp" label="HP" [autoScroll]="true" [optionList]="compresorConstants.HP"
+          placeholder="Seleccionar HP"></app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="fases" label="Fases" [autoScroll]="true" placeholder="Seleccionar Fases"
+          [optionList]="compresorConstants.Fases"></app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="conexion" label="Conexión" [autoScroll]="true" [dropdownPosition]="'top'"
+          placeholder="Seleccionar Conexión" [optionList]="compresorConstants.Conexion">
+        </app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="voltaje" label="Voltaje" [autoScroll]="true" [dropdownPosition]="'top'"
+          placeholder="Seleccionar Voltaje" [optionList]="compresorConstants.Voltaje">
+        </app-select-field>
+      </div>
+    </form>
+    <section class="w-full information-button-container flex justify-center align-items-center mt-2 bg-gray-600">
+      <ion-button color="danger" size="small" *ngIf="filterForm.touched" (click)="resetForm()">Limpiar Formulario</ion-button>
+      <ion-button  (click)="viewResults()">Ver Resultados</ion-button>
+    </section>
+  </div>
+  <div *ngIf="checkResults" class="h-4/5 overflow-y-scroll">
+    <div class="px-4 py-4 border-b-2 border-gray-200">
+      <h1>Resultados: {{compressorsToFilter.length}}</h1>
+    </div>
+    <ion-list no-lines inset="true" class="list-container py-0">
+      <ion-item class="w-full" *ngFor="let compressor of compressorsToFilter">
+        <ion-label>{{compressor.modelo}}</ion-label>
+        <ion-button (click)="viewCompressor(compressor)">Ver</ion-button>
+      </ion-item>
+    </ion-list>
+    <section class="w-full information-button-container flex justify-center align-items-center mt-2 bg-gray-600">
+      <ion-button style="width:10rem;" (click)="returnToFilter()">Regresar</ion-button>
+
+    </section>
+  </div>
+</ion-content>

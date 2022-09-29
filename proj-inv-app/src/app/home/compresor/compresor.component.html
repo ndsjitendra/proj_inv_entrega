@@ -1,0 +1,397 @@
+<div class="min-h-full w-full bg-gray-600 p-5">
+  <div class="p-5 bg-gray-200 shadow rounded-md ">
+    <h1 *ngIf="newCompresorCheck || compresor" class="text-2xl">
+      <span *ngIf="editCheck && !newCompresorCheck">Editando: </span>
+      <span *ngIf="editCheck && newCompresorCheck">Nuevo </span>
+      Compresor
+    </h1>
+    <div *ngIf="compresor">
+    <div class="row" *ngIf="dataInitialized && !editCheck">
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Modelo</label>
+        </div>
+        {{compresor.modelo}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Aplicación</label>
+        </div>
+        {{compresor.aplicacion}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">BTU</label>
+        </div>
+        {{compresor.btu}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Conexión</label>
+        </div>
+        {{compresor.conexion}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Descripción</label>
+        </div>
+        {{compresor.desc_prod}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Fases</label>
+        </div>
+        {{compresor.fases}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">HP</label>
+        </div>
+        {{compresor.hp}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Refrigerante</label>
+        </div>
+        {{compresor.refrigerante}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Tipo</label>
+        </div>
+        {{compresor.tipo}}
+      </div>
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Voltaje</label>
+        </div>
+        {{compresor.voltaje}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Mínimo Presión Evaporacion</label>
+        </div>
+        {{compresor.minimoPresionEvaporacion}}
+      </div>
+
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Máximo Presión Evaporacion</label>
+        </div>
+        {{compresor.maximoPresionEvaporacion}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Mínimo Temperatura Evaporacion</label>
+        </div>
+        {{compresor.minimoTemperaturaEvaporacion}}
+      </div>
+
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Máximo Temperatura Evaporacion</label>
+        </div>
+        {{compresor.maximoTemperaturaEvaporacion}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Mínimo Presión Condensación</label>
+        </div>
+        {{compresor.minimoPresionCondensacion}}
+      </div>
+
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Máximo Presión Condensación</label>
+        </div>
+        {{compresor.maximoPresionCondensacion}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Mínimo Temperatura Condensación</label>
+        </div>
+        {{compresor.minimoTemperaturaCondensacion}}
+      </div>
+
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Máximo Temperatura Condensación</label>
+        </div>
+        {{compresor.maximoTemperaturaCondensacion}}
+      </div>
+      <div class="col-6">
+        <div>
+          <label class="text-xl font-bold">Mínimo Temperatura Final</label>
+        </div>
+        {{compresor.minimoTemperaturaFinal}}
+      </div>
+
+      <div class="col-6 mb-2">
+        <div>
+          <label class="text-xl font-bold">Máximo Temperatura Final</label>
+        </div>
+        {{compresor.maximoTemperaturaFinal}}
+      </div>
+
+    </div>
+  </div>
+      <form [formGroup]="compresorForm" *ngIf="dataInitialized && (editCheck || newCompresorCheck)">
+        <div class="row">
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.modelo || compresorForm.value.modelo === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Modelo</label>
+            </div>
+            <input [disabled]="editCheck && !newCompresorCheck" id="modelo" formControlName="modelo" autocomplete="disabled"
+              type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.modelo" placeholder="Ingresar modelo" required autofocus>
+          </div>
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.aplicacion || compresorForm.value.aplicacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Aplicación</label>
+            </div>
+            <input id="aplicacion" formControlName="aplicacion" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.aplicacion" placeholder="Ingresar aplicación" required autofocus>
+          </div>
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.btu || compresorForm.value.btu === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">BTU</label>
+            </div>
+            <input id="btu" formControlName="btu" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.btu" placeholder="Ingresar btu" required autofocus>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.conexion || compresorForm.value.conexion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Conexión</label>
+            </div>
+            <input id="conexion" formControlName="conexion" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.conexion" placeholder="Ingresar conexión" required autofocus>
+          </div>
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.desc_prod || compresorForm.value.desc_prod === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Descripción</label>
+            </div>
+            <input id="desc_prod" formControlName="desc_prod" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.desc_prod" placeholder="Ingresar descripción" required autofocus>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.fases || compresorForm.value.fases === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Fases</label>
+            </div>
+            <input id="fases" formControlName="fases" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.fases" placeholder="Ingresar fases" required autofocus>
+          </div>
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.hp || compresorForm.value.hp === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">HP</label>
+            </div>
+            <input id="hp" formControlName="hp" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.hp" placeholder="Ingresar hp" required autofocus>
+          </div>
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.refrigerante || compresorForm.value.refrigerante === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Refrigerante</label>
+            </div>
+            <input id="refrigerante" formControlName="refrigerante" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.refrigerante" placeholder="Ingresar refrigerante" required autofocus>
+          </div>
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.tipo || compresorForm.value.tipo === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Tipo</label>
+            </div>
+            <input id="tipo" formControlName="tipo" autocomplete="disabled" type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.tipo" placeholder="Ingresar tipo" required autofocus>
+            </div>
+            <div class="col-6 mb-2">
+              <div>
+                <label
+                  [ngClass]="{'required-value-missing': (!compresorForm.value.voltaje || compresorForm.value.voltaje === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                  class="text-xl font-bold">Voltaje</label>
+              </div>
+              <input id="voltaje" formControlName="voltaje" autocomplete="disabled" type="text" (change)="change()"
+                class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+                [value]="compresorForm.value.voltaje" placeholder="Ingresar voltaje" required autofocus>
+          </div>
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.minimoPresionEvaporacion || compresorForm.value.minimoPresionEvaporacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Mínimo Presión Evaporacion</label>
+            </div>
+            <input id="minimoPresionEvaporacion" formControlName="minimoPresionEvaporacion" autocomplete="disabled" type="text"
+              (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.minimoPresionEvaporacion" placeholder="Ingresar Mínimo Presión Evaporacion" required
+              autofocus>
+          </div>
+
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.maximoPresionEvaporacion || compresorForm.value.maximoPresionEvaporacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Máximo Presión Evaporacion</label>
+            </div>
+            <input id="maximoPresionEvaporacion" formControlName="maximoPresionEvaporacion" autocomplete="disabled" type="text"
+              (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.maximoPresionEvaporacion" placeholder="Ingresar Máximo Presión Evaporacion" required
+              autofocus>
+          </div>
+
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.minimoTemperaturaEvaporacion || compresorForm.value.minimoTemperaturaEvaporacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Mínimo Temperatura Evaporacion</label>
+            </div>
+            <input id="minimoTemperaturaEvaporacion" formControlName="minimoTemperaturaEvaporacion" autocomplete="disabled"
+              type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.minimoTemperaturaEvaporacion" placeholder="Ingresar Mínimo Temperatura Evaporacion"
+              required autofocus>
+          </div>
+
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.maximoTemperaturaEvaporacion || compresorForm.value.maximoTemperaturaEvaporacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Máximo Temperatura Evaporacion</label>
+            </div>
+            <input id="maximoTemperaturaEvaporacion" formControlName="maximoTemperaturaEvaporacion" autocomplete="disabled"
+              type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.maximoTemperaturaEvaporacion" placeholder="Ingresar Máximo Temperatura Evaporacion"
+              required autofocus>
+          </div>
+
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.minimoPresionCondensacion || compresorForm.value.minimoPresionCondensacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Mínimo Presión Condensación</label>
+            </div>
+            <input id="minimoPresionCondensacion" formControlName="minimoPresionCondensacion" autocomplete="disabled" type="text"
+              (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.minimoPresionCondensacion" placeholder="Ingresar Mínimo Presión Condensación" required
+              autofocus>
+          </div>
+
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.maximoPresionCondensacion || compresorForm.value.maximoPresionCondensacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Máximo Presión Condensación</label>
+            </div>
+            <input id="maximoPresionCondensacion" formControlName="maximoPresionCondensacion" autocomplete="disabled" type="text"
+              (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.maximoPresionCondensacion" placeholder="Ingresar Máximo Presión Condensación" required
+              autofocus>
+          </div>
+
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.minimoTemperaturaCondensacion || compresorForm.value.minimoTemperaturaCondensacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Mínimo Temperatura Condensación</label>
+            </div>
+            <input id="minimoTemperaturaCondensacion" formControlName="minimoTemperaturaCondensacion" autocomplete="disabled"
+              type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.minimoTemperaturaCondensacion" placeholder="Ingresar Mínimo Temperatura Condensación"
+              required autofocus>
+          </div>
+
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.maximoTemperaturaCondensacion || compresorForm.value.maximoTemperaturaCondensacion === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Máximo Temperatura Condensación</label>
+            </div>
+            <input id="maximoTemperaturaCondensacion" formControlName="maximoTemperaturaCondensacion" autocomplete="disabled"
+              type="text" (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.maximoTemperaturaCondensacion" placeholder="Ingresar Máximo Temperatura Condensación"
+              required autofocus>
+          </div>
+
+          <div class="col-6">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.minimoTemperaturaFinal || compresorForm.value.minimoTemperaturaFinal === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Mínimo Temperatura Final</label>
+            </div>
+            <input id="minimoTemperaturaFinal" formControlName="minimoTemperaturaFinal" autocomplete="disabled" type="text"
+              (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.minimoTemperaturaFinal" placeholder="Ingresar Mínimo Temperatura Final" required
+              autofocus>
+          </div>
+
+          <div class="col-6 mb-2">
+            <div>
+              <label
+                [ngClass]="{'required-value-missing': (!compresorForm.value.maximoTemperaturaFinal || compresorForm.value.maximoTemperaturaFinal === '') && validationIssues && (editCheck || newCompresorCheck)}"
+                class="text-xl font-bold">Máximo Temperatura Final</label>
+            </div>
+            <input id="maximoTemperaturaFinal" formControlName="maximoTemperaturaFinal" autocomplete="disabled" type="text"
+              (change)="change()"
+              class="bg-gray-600 shadow appearance-none w-full rounded py-2 px-3 leading-tight focus:outline-none text-white"
+              [value]="compresorForm.value.maximoTemperaturaFinal" placeholder="Ingresar Máximo Temperatura Final" required
+              autofocus>
+            </div>
+
+        </div>
+      </form>
+      <app-alert class="alert-position" *ngIf="showAlert" [type]="alertType" [message]="alertMessage">
+      </app-alert>
+      <div class="p-5" *ngIf="!dataInitialized && !editCheck &&  !newCompresorCheck">
+        <div class="p-5 text-center">
+          <p class="text-2xl">No se selecciono compresor!</p>
+        </div>
+      </div>
+      </div>
+
+      <div class="m-2 h-32 d-flex justify-center align-items-center" [ngClass]="{'submit-check': submitCheck}">
+        <button *ngIf="!editCheck || newCompresorCheck" class="rounded-md text-xl w-32 bg-gray-500 p-3 m-3"
+          (click)="regresar()">Regresar</button>
+        <button *ngIf="!editCheck && compresor" class="rounded-md text-xl w-32 bg-blue-500 p-3 m-3"
+          (click)="editar()">Editar</button>
+        <button *ngIf="editCheck && !newCompresorCheck && compresor" class="rounded-md text-xl w-32 bg-red-500 p-3 m-3"
+          (click)="cancelEdit()">Cancelar Edición</button>
+        <button *ngIf="editCheck && !newCompresorCheck" class="rounded-md text-xl w-32 bg-green-500 p-3 m-3"
+          (click)="submit('edit')">Confirmar Edición</button>
+        <button *ngIf="editCheck && newCompresorCheck" class="rounded-md text-xl w-auto bg-green-500 p-3 m-3"
+          (click)="submit('new')">Confirmar Creación de Compresor</button>
+        </div>
+
+            </div>
+
+

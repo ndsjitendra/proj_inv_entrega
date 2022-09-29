@@ -1,0 +1,24 @@
+<!--SECCION 4-->
+<form *ngIf="dataInitialized" [formGroup]="checklistForm" class="flex justify-center flex-column p-3">
+  <div class="container text-center">
+    <p class="text-2xl text-red-700 font-bold">Alerta</p>
+  </div>
+  <div class="container">
+    <app-checkbox-field label="He leído el Manual de Instalación que viene incluido en el compresor."
+      formControlName="check1" [isRequired]="true" [checkboxSizeLarge]="true"></app-checkbox-field>
+  </div>
+  <div class="container">
+    <app-checkbox-field label="He leído y acepto los términos y condiciones de la garantía de Invotech." formControlName="check2" [isRequired]="true"
+      [checkboxSizeLarge]="true"></app-checkbox-field>
+  </div>
+  <div class="container">
+    <app-checkbox-field label="Declaro que toda la información proporcionada es verdadera, completa, correcta, y en caso de ser lo contrario la garantía podrá ser negada." formControlName="check3" [isRequired]="true"
+      [checkboxSizeLarge]="true"></app-checkbox-field>
+  </div>
+  <div class="container">
+    <ion-button class="w-full" (click)="openPDF()">Términos y Condiciones</ion-button>
+  </div>
+  <div class="container text-center">
+    <p class="text-sm text-red-700 font-bold">Al seleccionar siguiente ya no podrá regresar a los pasos anteriores!</p>
+  </div>
+</form>

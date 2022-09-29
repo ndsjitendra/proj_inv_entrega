@@ -1,0 +1,33 @@
+:host {
+
+  button {
+    height: 64px;
+  }
+
+  .bigger-font {
+    font-size: 16px;
+  }
+
+  button:focus {
+    outline:0;
+  }
+
+  ion-spinner {
+    float: right;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .background-primary {
+    color: var(--ion-color-white);
+    background: var(--ion-color-primary);
+  }
+
+  .background-light {
+    background: var(--ion-color-light);
+  }
+}

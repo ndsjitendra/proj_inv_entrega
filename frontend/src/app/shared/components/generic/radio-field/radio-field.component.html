@@ -1,0 +1,12 @@
+<label *ngIf="showLabel" [ngClass]="{'required-missing-color': isValidated, 'color-gray': labelGreyed}">
+  {{ label }}<span *ngIf="isRequired"> *</span>
+</label>
+<div class="custom-radio-buttons" >
+  <label *ngFor="let option of options" style="white-space: normal"
+    [ngClass]="{'focus active':value === option.value, 'label-disabled': disableCheck}">
+    <input type="radio" [value]="option.value" (click)="valueChange(option.value, $event)" [disabled]="locked">
+    <ion-icon style="font-size:24px; margin-right:5px" name="checkmark-circle-outline" *ngIf=" value=== option.value"> </ion-icon>
+    <ion-icon style="font-size:24px; margin-right:5px" name="ellipse-outline" *ngIf="value !==option.value"></ion-icon>
+    {{ option.label }}
+  </label>
+</div>

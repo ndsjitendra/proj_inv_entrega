@@ -1,0 +1,65 @@
+<!--SECCION 2-->
+<ion-content>
+  <form *ngIf="dataInitialized" [formGroup]="addNewForm" class="p-3">
+    <div class="container">
+      <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Registro </label>
+      <p>{{newDate | date: "dd/MM/yyyy"}}</p>
+    </div>
+    <div class="container">
+      <app-input-field formControlName="modelo" label="Modelo" [isRequired]="true" [maxlength]="50" [upperCase]="true" placeholder="Ingresar modelo" [isValidated]="(validationIssues && !addNewForm.controls.modelo.valid) || !modelCheck">
+      </app-input-field>
+    </div>
+    <div class="container">
+      <app-input-field formControlName="serie" label="# de Serie" [autoScroll]="true" [isRequired]="true" [isValidated]="validationIssues && !addNewForm.controls.serie.valid"
+        placeholder="Ingresar # de Serie" [minlength]="11" [maxlength]="11" type='text'></app-input-field>
+    </div>
+    <div *ngIf="!compresor" class="flex justify-center">
+      <ion-button color="primary" (click)="checkModelData()">Validar Compresor</ion-button>
+    </div>
+    <p *ngIf="!modelCheck" class="required-missing-color text-center text-xl">Modelo no existe!</p>
+    <div *ngIf="compresor">
+      <div class="container">
+        <app-input-field formControlName="btu" [disableCheck]="true" label="BTU" [isRequired]="true" [autoScroll]="true"
+          [isValidated]="validationIssues && !addNewForm.controls.btu.valid"
+          placeholder="Ingresar BTU"></app-input-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="hp" label="HP" [disableCheck]="true" [isRequired]="true" [autoScroll]="true"
+          [isValidated]="validationIssues && !addNewForm.controls.hp.valid"
+          [optionList]="compresorConstants.HP" placeholder="Seleccionar HP"></app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="aplicacion" [disableCheck]="true" label="Aplicación" [isRequired]="true"
+          [autoScroll]="true" [isValidated]="validationIssues && !addNewForm.controls.aplicacion.valid"
+          placeholder="Seleccionar Aplicación" [optionList]="compresorConstants.Aplicacion"></app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="fases" [disableCheck]="true" label="Fases" [isRequired]="true" [autoScroll]="true"
+          [isValidated]="validationIssues && !addNewForm.controls.fases.valid"
+          placeholder="Seleccionar Fases" [optionList]="compresorConstants.Fases"></app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="refrigerante" [disableCheck]="true" label="Refrigerante" [autoScroll]="true"
+          [isValidated]="validationIssues && !addNewForm.controls.refrigerante.valid"
+          [dropdownPosition]="'top'" [isRequired]="true" placeholder="Seleccionar Refrigerante"
+          [optionList]="compresorConstants.Refrigerante"></app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="conexion" [disableCheck]="true" label="Conexión" [autoScroll]="true"
+          [dropdownPosition]="'top'" [isValidated]="validationIssues && !addNewForm.controls.conexion.valid"
+          [isRequired]="true" placeholder="Seleccionar Conexión" [optionList]="compresorConstants.Conexion">
+        </app-select-field>
+      </div>
+      <div class="container">
+        <app-select-field formControlName="voltaje" [disableCheck]="true" label="Voltaje" [autoScroll]="true"
+          [dropdownPosition]="'top'" [isValidated]="validationIssues && !addNewForm.controls.voltaje.valid"
+          [isRequired]="true" placeholder="Seleccionar Voltaje" [optionList]="compresorConstants.Voltaje">
+        </app-select-field>
+      </div>
+    </div>
+  </form>
+</ion-content>
+<!-- <div *ngIf="serialAlreadyExists" class="text-center">
+  <p  class="required-missing-color"># de Serie ya Existe!</p>
+</div> -->
+<!--FIN DE SECCION 2-->
